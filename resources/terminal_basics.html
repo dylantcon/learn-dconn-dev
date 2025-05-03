@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Terminal/Command Line Basics - CoderOgres</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/terminal_basics.html -->
+  <h1>Terminal/Command Line Basics</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>What is the Terminal?</h2>
+  <p>The terminal (also called "command line" or "console") is like having a text conversation with your computer. Instead of clicking on icons and buttons, you type commands to tell your computer what to do. At first, it might seem scary, but it's actually a very powerful tool that all programmers use! <strong>If you practice</strong>, you can do things much faster than if you were using the graphical user interface (aka the GUI, the icons and buttons). If you want to work on software for a living, it's a great idea to start using the terminal now--<em>it will definitely pay off</em>! I use the terminal for everything now, I even made this website there.</p>
+
+  <p>Different operating systems call it different things:</p>
+  <ul>
+    <li><strong>Windows:</strong> Command Prompt or PowerShell</li>
+    <li><strong>Mac:</strong> Terminal</li>
+    <li><strong>Linux:</strong> Terminal or Console</li>
+  </ul>
+
+  <hr>
+
+  <h2>Opening the Terminal</h2>
+
+  <h3>Windows:</h3>
+  <ol>
+    <li>Press the Windows key</li>
+    <li>Type "cmd" or "PowerShell"</li>
+    <li>Click on "Command Prompt" or "Windows PowerShell"</li>
+  </ol>
+
+  <h3>Mac:</h3>
+  <ol>
+    <li>Open Finder</li>
+    <li>Go to Applications → Utilities</li>
+    <li>Double-click on "Terminal"</li>
+  </ol>
+
+  <h3>Linux:</h3>
+  <ol>
+    <li>Press Ctrl+Alt+T</li>
+    <li>Or search for "Terminal" in your applications menu</li>
+  </ol>
+
+  <hr>
+
+  <h2>Understanding the Terminal</h2>
+  <p>When you open the terminal, you'll see something like this:</p>
+  <pre>
+C:\Users\YourName&gt;      (Windows)
+YourName@MacBook ~ %    (Mac)
+username@computer:~$    (Linux)
+  </pre>
+
+  <p>This is called the "prompt". It's waiting for you to type a command!</p>
+
+  <hr>
+
+  <h2>Essential Commands</h2>
+
+  <h3>Where Am I? - Current Directory</h3>
+  <p>To see which folder (directory) you're currently in:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>cd</code> (by itself)</li>
+    <li><strong>Mac/Linux:</strong> <code>pwd</code> (print working directory)</li>
+  </ul>
+
+  <h3>What's in Here? - List Files</h3>
+  <p>To see what files and folders are in your current location:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>dir</code></li>
+    <li><strong>Mac/Linux:</strong> <code>ls</code></li>
+  </ul>
+
+  <h3>Moving Around - Change Directory</h3>
+  <p>To move to a different folder:</p>
+  <pre>cd foldername</pre>
+  
+  <p>To go back to the parent folder:</p>
+  <pre>cd ..</pre>
+  
+  <p>To go to your home directory:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>cd %USERPROFILE%</code></li>
+    <li><strong>Mac/Linux:</strong> <code>cd ~</code></li>
+  </ul>
+
+  <h3>Creating Folders - Make Directory</h3>
+  <p>To create a new folder:</p>
+  <pre>mkdir newfoldername</pre>
+
+  <h3>Creating Files</h3>
+  <p>To create an empty file:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>type nul &gt; filename.txt</code></li>
+    <li><strong>Mac/Linux:</strong> <code>touch filename.txt</code></li>
+  </ul>
+
+  <h3>Copying Files</h3>
+  <p>To copy a file:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>copy source.txt destination.txt</code></li>
+    <li><strong>Mac/Linux:</strong> <code>cp source.txt destination.txt</code></li>
+  </ul>
+
+  <h3>Moving/Renaming Files</h3>
+  <p>To move or rename a file:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>move oldname.txt newname.txt</code></li>
+    <li><strong>Mac/Linux:</strong> <code>mv oldname.txt newname.txt</code></li>
+  </ul>
+
+  <h3>Deleting Files (Be Careful!)</h3>
+  <p>To delete a file:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>del filename.txt</code></li>
+    <li><strong>Mac/Linux:</strong> <code>rm filename.txt</code></li>
+  </ul>
+  <p><strong>WARNING:</strong> Deleted files don't go to the Recycle Bin/Trash - they're gone forever!</p>
+
+  <h3>Clear the Screen</h3>
+  <p>When your terminal gets messy:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>cls</code></li>
+    <li><strong>Mac/Linux:</strong> <code>clear</code></li>
+  </ul>
+
+  <hr>
+
+  <h2>Useful Tips</h2>
+
+  <h3>Tab Completion</h3>
+  <p>Press the Tab key while typing a filename or folder name, and the terminal will try to complete it for you. This saves time and prevents typos!</p>
+
+  <h3>Command History</h3>
+  <p>Use the up and down arrow keys to scroll through commands you've typed before.</p>
+
+  <h3>Cancel a Command</h3>
+  <p>If something goes wrong or a command is taking too long, press Ctrl+C to stop it.</p>
+
+  <h3>Getting Help</h3>
+  <p>Most commands have built-in help:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>command /?</code> (example: <code>dir /?</code>)</li>
+    <li><strong>Mac/Linux:</strong> <code>man command</code> (example: <code>man ls</code>)</li>
+  </ul>
+
+  <hr>
+
+  <h2>Practice Exercise</h2>
+  <p>Let's practice what we've learned! Follow these steps:</p>
+
+  <ol>
+    <li>Open your terminal</li>
+    <li>Check where you are with <code>pwd</code> (Mac/Linux) or <code>cd</code> (Windows)</li>
+    <li>Create a new folder called "python_projects":
+      <pre>mkdir python_projects</pre>
+    </li>
+    <li>Move into that folder:
+      <pre>cd python_projects</pre>
+    </li>
+    <li>Create a file called "hello.py":
+      <ul>
+        <li>Windows: <code>type nul &gt; hello.py</code></li>
+        <li>Mac/Linux: <code>touch hello.py</code></li>
+      </ul>
+    </li>
+    <li>List the files to make sure it's there:
+      <ul>
+        <li>Windows: <code>dir</code></li>
+        <li>Mac/Linux: <code>ls</code></li>
+      </ul>
+    </li>
+    <li>Go back to the parent directory:
+      <pre>cd ..</pre>
+    </li>
+  </ol>
+
+  <p>Great job! You've just used the terminal to create a project folder and file!</p>
+
+  <hr>
+
+  <h2>Common Pitfalls</h2>
+  <ul>
+    <li><strong>Spaces in names:</strong> If a folder or file name has spaces, put it in quotes: <code>cd "My Documents"</code></li>
+    <li><strong>Case sensitivity:</strong> Mac and Linux care about uppercase/lowercase. Windows doesn't.</li>
+    <li><strong>Wrong slash:</strong> Windows uses backslash (\) in paths, Mac/Linux use forward slash (/)</li>
+  </ul>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <p>Now that you know the basics of using the terminal, you can:</p>
+  <ul>
+    <li><a href="./python_command_line.html">Learn how to run Python from the command line</a></li>
+    <li><a href="./first_steps.html">Create your first Python program</a></li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Debugging Guide - CoderOgres</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/debugging_guide.html -->
+  <h1>Basic Debugging Guide - Understanding and Fixing Common Errors</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>What is Debugging?</h2>
+  <p>Debugging is like being a detective for your code. When something goes wrong (and it will - even for experienced programmers!), debugging helps you find out why and fix it. The term comes from an old story about finding an actual bug (a moth) in a computer!</p>
+
+  <p>In this guide, we'll learn how to use Thonny, a beginner-friendly Python editor that makes debugging much easier.</p>
+
+  <hr>
+
+  <h2>Getting Started with Thonny</h2>
+  <p>If you haven't already, download and install Thonny from <a href="https://thonny.org/" target="_blank">thonny.org</a>. It's free and works on Windows, Mac, and Linux.</p>
+
+  <h3>The Thonny Interface</h3>
+  <ul>
+    <li><strong>Editor area:</strong> Where you write your code</li>
+    <li><strong>Shell area:</strong> Where you see output and can test code</li>
+    <li><strong>Variables panel:</strong> Shows what's stored in your variables (View → Variables)</li>
+    <li><strong>Assistant panel:</strong> Helps explain errors (View → Assistant)</li>
+  </ul>
+
+  <hr>
+
+  <h2>Using Thonny's Debugger</h2>
+
+  <h3>Step-by-Step Debugging</h3>
+  <p>Thonny has a special feature that lets you run your code line by line:</p>
+
+  <ol>
+    <li>Write your code in the editor</li>
+    <li>Click the "Debug current script" button (it looks like a little bug)</li>
+    <li>Use these buttons to control the debugger:
+      <ul>
+        <li><strong>Step over:</strong> Run the current line</li>
+        <li><strong>Step into:</strong> Go inside a function</li>
+        <li><strong>Step out:</strong> Finish the current function</li>
+        <li><strong>Resume:</strong> Run until the next breakpoint</li>
+        <li><strong>Stop:</strong> Stop debugging</li>
+      </ul>
+    </li>
+    <li>Watch the Variables panel to see how your data changes</li>
+  </ol>
+
+  <h3>Example: Debugging a Simple Program</h3>
+  <pre>
+name = input("What's your name? ")
+age = input("How old are you? ")
+next_year = age + 1
+print(f"Next year, {name} will be {next_year} years old!")
+  </pre>
+
+  <p>If you run this program, you'll get an error! Let's debug it:</p>
+  <ol>
+    <li>Click the debug button</li>
+    <li>Step through each line</li>
+    <li>Watch the Variables panel - notice that 'age' is a string, not a number!</li>
+    <li>The error happens because we can't add 1 to a string</li>
+  </ol>
+
+  <p>The fix: Convert the input to a number:</p>
+  <pre>
+name = input("What's your name? ")
+age = int(input("How old are you? "))  # Convert to integer
+next_year = age + 1
+print(f"Next year, {name} will be {next_year} years old!")
+  </pre>
+
+  <hr>
+
+  <h2>Common Python Errors and How to Fix Them</h2>
+
+  <h3>1. SyntaxError</h3>
+  <p><strong>What it means:</strong> You've written something Python doesn't understand</p>
+  <p><strong>Common causes:</strong></p>
+  <ul>
+    <li>Missing colons after if/for/while/def</li>
+    <li>Unclosed parentheses, brackets, or quotes</li>
+    <li>Using = instead of == for comparison</li>
+  </ul>
+  <p><strong>Example:</strong></p>
+  <pre>
+# Wrong:
+if x > 5
+    print("Big number")
+
+# Right:
+if x > 5:
+    print("Big number")
+  </pre>
+
+  <h3>2. IndentationError</h3>
+  <p><strong>What it means:</strong> Your code isn't lined up properly</p>
+  <p><strong>Common causes:</strong></p>
+  <ul>
+    <li>Mixing tabs and spaces</li>
+    <li>Inconsistent indentation</li>
+  </ul>
+  <p><strong>Example:</strong></p>
+  <pre>
+# Wrong:
+if x &gt; 5:
+print("Big number")  # Not indented!
+
+# Right:
+if x &gt; 5:
+    print("Big number")  # Properly indented
+  </pre>
+
+  <h3>3. NameError</h3>
+  <p><strong>What it means:</strong> You're using a variable that doesn't exist</p>
+  <p><strong>Common causes:</strong></p>
+  <ul>
+    <li>Typos in variable names</li>
+    <li>Using a variable before creating it</li>
+    <li>Variable is in a different scope</li>
+  </ul>
+  <p><strong>Example:</strong></p>
+  <pre>
+# Wrong:
+print(messge)  # Typo!
+
+# Right:
+message = "Hello"
+print(message)
+  </pre>
+
+  <h3>4. TypeError</h3>
+  <p><strong>What it means:</strong> You're using the wrong type of data</p>
+  <p><strong>Common causes:</strong></p>
+  <ul>
+    <li>Trying to add strings and numbers</li>
+    <li>Using the wrong operation for a data type</li>
+  </ul>
+  <p><strong>Example:</strong></p>
+  <pre>
+# Wrong:
+age = "15"
+next_age = age + 1  # Can't add number to string!
+
+# Right:
+age = "15"
+next_age = int(age) + 1
+  </pre>
+
+  <h3>5. IndexError</h3>
+  <p><strong>What it means:</strong> You're trying to access something that doesn't exist in a list</p>
+  <p><strong>Common causes:</strong></p>
+  <ul>
+    <li>Counting from 1 instead of 0</li>
+    <li>Going past the end of a list</li>
+  </ul>
+  <p><strong>Example:</strong></p>
+  <pre>
+# Wrong:
+fruits = ["apple", "banana", "orange"]
+print(fruits[3])  # There is no index 3!
+
+# Right:
+fruits = ["apple", "banana", "orange"]
+print(fruits[2])  # Remember: counting starts at 0
+  </pre>
+
+  <hr>
+
+  <h2>Debugging Tips and Tricks</h2>
+
+  <h3>1. Use Print Statements</h3>
+  <p>Add print statements to see what's happening in your code:</p>
+  <pre>
+score = 0
+print(f"Score is now: {score}")
+score = score + 10
+print(f"Score after adding 10: {score}")
+  </pre>
+
+  <h3>2. Read Error Messages Carefully</h3>
+  <p>Python error messages tell you:</p>
+  <ul>
+    <li>What type of error occurred</li>
+    <li>Which line caused the error</li>
+    <li>Often, what went wrong</li>
+  </ul>
+
+  <h3>3. Use Thonny's Assistant</h3>
+  <p>Thonny's Assistant panel explains errors in simple language. If you get an error, check what the Assistant says!</p>
+
+  <h3>4. Test Small Parts</h3>
+  <p>If something isn't working, test small pieces of code in the Shell area to understand what each part does.</p>
+
+  <h3>5. Take Breaks</h3>
+  <p>Sometimes the best debugging tool is taking a short break. Come back with fresh eyes!</p>
+
+  <hr>
+
+  <h2>Practice: Debug This Code</h2>
+  <p>Try to find and fix all the errors in this program:</p>
+  <pre>
+print("Welcome to the number game!)
+player_name = input("What's your name? ")
+secret_number = 7
+guess = input("Guess a number between 1 and 10: ")
+
+if guess = secret_number:
+    print("You got it, player_name!")
+else:
+print("Sorry, the number was secret_number")
+  </pre>
+
+  <details>
+    <summary>Click to see the solution</summary>
+    <pre>
+print("Welcome to the number game!")  # Fixed: closed quote
+player_name = input("What's your name? ")
+secret_number = 7
+guess = int(input("Guess a number between 1 and 10: "))  # Fixed: convert to int
+
+if guess == secret_number:  # Fixed: use == for comparison
+    print(f"You got it, {player_name}!")  # Fixed: use f-string
+else:
+    print(f"Sorry, the number was {secret_number}")  # Fixed: indentation and f-string
+    </pre>
+  </details>
+
+  <hr>
+
+  <h2>Remember: Everyone Makes Mistakes!</h2>
+  <p>Even professional programmers spend a lot of time debugging. Errors are a normal part of learning to code. Each error is a chance to learn something new!</p>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <p>Now that you know how to debug, you can:</p>
+  <ul>
+    <li><a href="./first_steps.html">Write your first Python program</a></li>
+    <li><a href="../notes/indexcoderogres.html">Learn more Python concepts</a></li>
+    <li>Practice debugging with more complex programs</li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>

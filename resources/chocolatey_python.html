@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Installing Python with Chocolatey - CoderOgres</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/chocolatey_python.html -->
+  <h1>Installing Python with Chocolatey</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>Before You Begin</h2>
+  <p>This guide assumes you already have Chocolatey installed on your Windows computer. If you haven't installed Chocolatey yet, please follow our <a href="./chocolatey_setup.html">Chocolatey Setup Guide</a> first.</p>
+
+  <hr>
+
+  <h2>Installing Python with Chocolatey</h2>
+  <p>Installing Python with Chocolatey is much simpler than the standard installation method, and it automatically adds Python to your PATH!</p>
+
+  <h3>Step 1: Open PowerShell as Administrator</h3>
+  <ol>
+    <li>Click on the Windows Start button</li>
+    <li>Type "PowerShell"</li>
+    <li>Right-click on "Windows PowerShell" in the search results</li>
+    <li>Select "Run as administrator"</li>
+    <li>Click "Yes" when asked if you want to allow the app to make changes</li>
+  </ol>
+
+  <h3>Step 2: Install Python</h3>
+  <p>In PowerShell, type this command and press Enter:</p>
+  <pre>choco install python -y</pre>
+
+  <p>The <code>-y</code> flag automatically answers "yes" to any questions during installation.</p>
+
+  <p>Wait for the installation to complete. You'll see a message saying the installation was successful when it's done!</p>
+
+  <h3>Step 3: Verify the Installation</h3>
+  <p>To make sure Python installed correctly, close your PowerShell window and open a new one (it doesn't need to be as administrator for this step). Then type:</p>
+  <pre>python --version</pre>
+
+  <p>If you see a version number (like "Python 3.11.4"), then Python installed successfully!</p>
+
+  <hr>
+
+  <h2>Why This Method Is Easier</h2>
+  <ul>
+    <li><strong>Automatic PATH setup:</strong> Chocolatey automatically adds Python to your PATH, so you can run it from any folder</li>
+    <li><strong>Simple upgrades:</strong> When a new version of Python is released, you can upgrade with a simple command: <code>choco upgrade python -y</code></li>
+    <li><strong>Fewer clicks:</strong> Just one command installs everything you need</li>
+  </ul>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <p>Now that you have Python installed, you can:</p>
+  <ul>
+    <li><a href="./first_steps.html">Run your first Python program</a></li>
+    <li><a href="./chocolatey_nano.html">Install the Nano text editor using Chocolatey</a> - a simple editor for writing code</li>
+    <li><a href="./python_command_line.html">Learn how to run Python from the command line</a></li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>

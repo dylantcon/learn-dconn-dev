@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Installing Python - CoderOgres</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Installing Python on Your Computer</h1>
+    
+    <p><a href="../index.html">Back to Home Page</a></p>
+    
+    <hr>
+    
+    <h2>What is Python?</h2>
+    <p>Python is a programming language that's great for beginners. It's used by scientists, game developers, web programmers, and many others. In this guide, I'll help you install Python on your computer so you can start coding! Message me on the course Canvas page if you have any trouble, and I will be happy to help.</p>
+    
+    <hr>
+    
+    <h2>Windows Installation</h2>
+    
+    <h3>The Standard Way</h3>
+    <ol>
+        <li>Go to the <a href="https://www.python.org/downloads/" target="_blank">official Python download page</a></li>
+        <li>Click the big yellow button that says "Download Python" (it will show the latest version)</li>
+        <li><strong>IMPORTANT:</strong> On the first installation screen, check the box that says "Add Python to PATH" before clicking "Install Now"</li>
+        <li>Wait for the installation to finish</li>
+        <li>To test if Python installed correctly:
+            <ol>
+                <li>Press the Windows key + R to open the Run dialog</li>
+                <li>Type "cmd" and press Enter to open Command Prompt</li>
+                <li>Type "python --version" and press Enter</li>
+                <li>You should see the Python version number (like "Python 3.11.4")</li>
+            </ol>
+        </li>
+    </ol>
+    
+    <p><strong>What is PATH?</strong> The PATH is a list of places where your computer looks for programs. By adding Python to PATH, you can run Python from any folder on your computer just by typing "python" in the command line.</p>
+    
+    <hr>
+    
+    <h2>Mac Installation</h2>
+    
+    <ol>
+        <li>Go to the <a href="https://www.python.org/downloads/" target="_blank">official Python download page</a></li>
+        <li>Click the yellow button to download the macOS installer</li>
+        <li>Open the downloaded file (it will be a .pkg file)</li>
+        <li>Follow the installation steps in the installer</li>
+        <li>To test if Python installed correctly:
+            <ol>
+                <li>Open the Terminal app (you can find it in Applications → Utilities → Terminal)</li>
+                <li>Type "python3 --version" and press Enter</li>
+                <li>You should see the Python version number</li>
+            </ol>
+        </li>
+    </ol>
+    
+    <p>On Mac, Python 2 might already be installed, but we want to use Python 3. That's why we use the command "python3" instead of just "python".</p>
+    
+    <hr>
+    
+    <h2>Linux Installation</h2>
+    
+    <p>Many Linux distributions come with Python already installed. To check if you have Python:</p>
+    
+    <ol>
+        <li>Open a terminal window</li>
+        <li>Type "python3 --version" and press Enter</li>
+        <li>If you see a version number, Python is already installed!</li>
+    </ol>
+    
+    <p>If Python isn't installed, you can install it using your distribution's package manager:</p>
+    
+    <h4>Ubuntu or Debian:</h4>
+    <pre>
+    sudo apt update
+    sudo apt install python3
+    </pre>
+    
+    <h4>Fedora:</h4>
+    <pre>
+    sudo dnf install python3
+    </pre>
+    
+    <hr>
+    
+    <h2>Troubleshooting</h2>
+    
+    <h3>"Python is not recognized as an internal or external command"</h3>
+    <p>This error means Python isn't in your PATH. If you see this on Windows:</p>
+    <ol>
+        <li>Try reinstalling Python and make sure to check "Add Python to PATH"</li>
+        <li>Or <a href="./chocolatey_python.html">install Python using Chocolatey</a> which automatically adds Python to PATH</li>
+    </ol>
+    
+    <h3>"Permission denied" on Mac or Linux</h3>
+    <p>Try adding "sudo" before the installation command, like "sudo apt install python3"</p>
+    
+    <hr>
+    
+    <h2>What's Next?</h2>
+    <p>Now that you have Python installed, check out our <a href="./first_steps.html">Running Your First Python Program</a> guide!</p>
+    
+    <hr>
+    
+    <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>

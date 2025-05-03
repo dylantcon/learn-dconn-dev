@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Installing Nano on Linux and Mac</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/linux_mac_nano.html -->
+  <h1>Installing the Nano Text Editor on Linux and Mac Systems</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>Before You Begin</h2>
+  <p>This guide will only work for computers running Mac or Linux operating systems (OS). There's a good chance that you'll be aware of what OS your computer is on, if it is anything other than Windows. <em>There's also a decent chance that if you're on one of these operating systems, that Nano is already installed.</em> You can check for this by opening your terminal, and running:</p>
+  <pre>nano demo.txt</pre>
+  <p>If a little window pops up (and not an error message), then you already have it! Feel free to look at <a href="./using_nano.html">this Nano guide</a>, where I explain how to use it. Otherwise, you can continue on!</p>
+
+  <hr>
+
+  <h2>What is Nano?</h2>
+  <p>Nano is a simple text editor that works right in your command line. It's much easier to use than other command line editors, because the controls are simple. This is why I am recommending it, since I expect that you are all beginners! Nano should be all you need for this course--it will serve you well.</p>
+
+  <hr>
+
+  <h2>Installing Nano on Linux Systems</h2>
+
+  <p>If you are on a Linux machine, there's a good chance that you'll have a program already installed on your machine, called <strong>apt</strong>. This is a package manager, which is kind of like your postal service worker, but for software. It is in charge of finding and bringing the right programs to your machine, whenever you ask it to.</p>
+
+  <h3>Open Your System's Terminal</h3>
+  <p>It will usually have an icon that looks something like this: <strong>&gt;_</strong>. You will run a command that tells your package manager to find and install Nano.</p>
+  
+  <ol>
+    <li>Navigate to the search bar and type in "Terminal", then click on the top result.</li>
+    <li>Once you're in the terminal, you'll usually see a window with a little bit of text. This will allow you to type in commands, and run them.</li>
+    <li>Type in:
+      <pre>sudo apt update</pre>
+      This tells the package manager to update itself. This will make sure that the software you install next is the latest and greatest version. Hit Enter once you're all finished.
+    </li>
+    <li>Then, type in:
+      <pre>sudo apt install nano</pre>
+      This command tells the package manager to find and install the Nano text editor onto your system. Hit Enter once you've typed it in.
+      
+      <p><em>If this doesn't work</em>, it's likely that you're using a specific kind of Linux that doesn't have <strong>apt</strong>. If you're using Fedora Linux, try this instead:</p>
+      <pre>sudo dnf install nano</pre>
+    </li>
+    <li>Type Yes or Y if it asks you to do so while the package is installing. The package manager is very careful to follow your instructions, so it will usually ask you to confirm everything unless you tell it not to by adding <strong>-y</strong> to the install command.</li>
+    <li>Then, you're all done! Great job, you've installed Nano!</li>
+  </ol>
+
+  <hr>
+
+  <h2>Installing Nano on Mac Systems</h2>
+
+  <p>Mac systems use a different package manager called Homebrew (often just called "brew"). Let's first check if you already have Homebrew installed, and install it if you don't.</p>
+
+  <h3>Open Your Terminal</h3>
+  <ol>
+    <li>Open Finder</li>
+    <li>Go to Applications → Utilities → Terminal</li>
+    <li>Once you're in the terminal, check if you have Homebrew by typing:
+      <pre>brew --version</pre>
+      If you see a version number, you already have Homebrew! Skip to step 5.
+    </li>
+    <li>If you don't have Homebrew, install it by copying and pasting this command:
+      <pre>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre>
+      Press Enter and follow any instructions it gives you.
+    </li>
+    <li>Now install Nano with:
+      <pre>brew install nano</pre>
+    </li>
+    <li>That's it! You've installed Nano on your Mac!</li>
+  </ol>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <ul>
+    <li>Try out your new editor, by following my <a href="./using_nano.html">Nano guide</a></li>
+    <li>If you're comfortable with Nano, try out some <a href="./first_steps.html">basic coding in Python</a>, where you write your own program!</li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+</body>
+</html>

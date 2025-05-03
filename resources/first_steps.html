@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Running Your First Python Program - CoderOgres</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/first_steps.html -->
+  <h1>Running Your First Python Program</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>Before You Begin</h2>
+  <p>This guide assumes you have already installed Python on your computer. If you haven't, please follow one of our installation guides first:</p>
+  <ul>
+    <li><a href="./python_installation.html">Standard Python Installation</a></li>
+    <li>Windows only: <a href="./chocolatey_python.html">Installing Python with Chocolatey</a></li>
+  </ul>
+
+  <hr>
+
+  <h2>Creating Your First Python Program</h2>
+  <p>Let's create a simple "Hello, World!" program - the traditional first program in any programming language.</p>
+
+  <h3>Step 1: Open Your Text Editor</h3>
+  <p>You can use any text editor to write Python code:</p>
+  <ul>
+    <li>Nano (command line): <code>nano hello.py</code></li>
+    <li>Notepad++ (Windows): Open Notepad++ and create a new file</li>
+    <li>TextEdit (Mac): Open TextEdit, go to Format → Make Plain Text, then create a new file</li>
+    <li>Thonny: Open Thonny and create a new file</li>
+  </ul>
+
+  <h3>Step 2: Write Your First Code</h3>
+  <p>Type the following code in your text editor:</p>
+  <pre>
+# This is my first Python program
+print("Hello, World!")
+print("Welcome to Python programming!")
+
+# Let's make it interactive
+name = input("What's your name? ")
+print(f"Nice to meet you, {name}!")
+  </pre>
+
+  <p>What this code does:</p>
+  <ul>
+    <li>Lines starting with <code>#</code> are comments - notes for humans that Python ignores</li>
+    <li><code>print()</code> displays text on the screen</li>
+    <li><code>input()</code> gets text input from the user</li>
+    <li><code>f"..."</code> is a format string that lets you include variables in your text</li>
+  </ul>
+
+  <h3>Step 3: Save Your File</h3>
+  <p>Save your file with a <code>.py</code> extension, which tells your computer it's a Python file. For example: <code>hello.py</code></p>
+  <ul>
+    <li>In Nano: Press Ctrl+O, type the filename, and press Enter</li>
+    <li>In other editors: Use File → Save or File → Save As</li>
+  </ul>
+
+  <h3>Step 4: Run Your Program</h3>
+  <p>Now it's time to run your program! You'll need to use the command line for this.</p>
+
+  <h4>On Windows:</h4>
+  <ol>
+    <li>Open Command Prompt or PowerShell</li>
+    <li>Navigate to the folder where you saved your file using the <code>cd</code> command
+      <pre>cd path\to\your\folder</pre>
+      <p>For example, if your file is on the Desktop:</p>
+      <pre>cd C:\Users\YourUsername\Desktop</pre>
+    </li>
+    <li>Run your program with Python:
+      <pre>python hello.py</pre>
+    </li>
+  </ol>
+
+  <h4>On Mac or Linux:</h4>
+  <ol>
+    <li>Open Terminal</li>
+    <li>Navigate to the folder where you saved your file:
+      <pre>cd path/to/your/folder</pre>
+      <p>For example, if your file is on the Desktop:</p>
+      <pre>cd ~/Desktop</pre>
+    </li>
+    <li>Run your program with Python:
+      <pre>python3 hello.py</pre>
+    </li>
+  </ol>
+
+  <h3>Step 5: See Your Program in Action!</h3>
+  <p>When you run your program, you should see:</p>
+  <pre>
+Hello, World!
+Welcome to Python programming!
+What's your name? 
+  </pre>
+
+  <p>Type your name and press Enter. You should then see something like:</p>
+  <pre>
+Nice to meet you, YourName!
+  </pre>
+
+  <p>Congratulations! You've just written and run your first Python program!</p>
+
+  <hr>
+
+  <h2>Understanding Your First Program</h2>
+
+  <h3>Line by Line Explanation</h3>
+  <ol>
+    <li><code># This is my first Python program</code> - This is a comment. Python ignores comments, but they help you understand your code</li>
+    <li><code>print("Hello, World!")</code> - This prints the text "Hello, World!" to the screen</li>
+    <li><code>print("Welcome to Python programming!")</code> - This prints another message</li>
+    <li><code># Let's make it interactive</code> - Another comment</li>
+    <li><code>name = input("What's your name? ")</code> - This asks the user for their name and stores it in a variable called 'name'</li>
+    <li><code>print(f"Nice to meet you, {name}!")</code> - This prints a message that includes the name the user entered</li>
+  </ol>
+
+  <h3>Key Concepts</h3>
+  <ul>
+    <li><strong>Functions</strong> like <code>print()</code> and <code>input()</code> are built-in commands that perform specific tasks</li>
+    <li><strong>Variables</strong> like <code>name</code> store information that you can use later</li>
+    <li><strong>Strings</strong> are text, usually enclosed in quotation marks</li>
+    <li><strong>f-strings</strong> (format strings) let you include variables inside text using <code>{}</code></li>
+  </ul>
+
+  <hr>
+
+  <h2>Try It Yourself: Modifying the Program</h2>
+  <p>Now try making some changes to see how your program works:</p>
+
+  <h3>Challenge 1: Add a Question</h3>
+  <p>Modify your program to ask the user for their age too. Add these lines after the name input:</p>
+  <pre>
+age = input("How old are you? ")
+print(f"Wow, {age} is a great age to learn programming!")
+  </pre>
+
+  <h3>Challenge 2: Create a Simple Calculator</h3>
+  <p>Create a new file called <code>calculator.py</code> with this code:</p>
+  <pre>
+print("Simple Calculator")
+num1 = input("Enter the first number: ")
+num2 = input("Enter the second number: ")
+
+# Convert input strings to numbers
+num1 = float(num1)
+num2 = float(num2)
+
+sum_result = num1 + num2
+print(f"{num1} + {num2} = {sum_result}")
+  </pre>
+
+  <p>Run this program the same way you ran your first one!</p>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <p>Now that you've run your first Python program, you can:</p>
+  <ul>
+    <li>Learn more about <a href="../notes/indexcoderogres.html">Python basics in our lecture notes</a></li>
+    <li>Try the <a href="https://www.w3schools.com/python/">W3Schools Python Tutorial</a> for more exercises</li>
+    <li>Explore more <a href="https://realpython.com/python-first-steps/">beginner Python projects at Real Python</a></li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>

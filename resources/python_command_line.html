@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Running Python from the Command Line - CoderOgres</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/python_command_line.html -->
+  <h1>Running Python from the Command Line</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>Before You Begin</h2>
+  <p>This guide assumes you have:</p>
+  <ul>
+    <li>Python installed on your computer (check our <a href="./python_installation.html">installation guide</a> if needed)</li>
+    <li>Basic familiarity with the terminal (see our <a href="./terminal_basics.html">terminal basics guide</a>)</li>
+  </ul>
+
+  <hr>
+
+  <h2>Two Ways to Use Python</h2>
+  <p>There are two main ways to use Python from the command line:</p>
+  <ol>
+    <li><strong>Interactive Mode:</strong> Type Python code directly and see results immediately</li>
+    <li><strong>Script Mode:</strong> Run Python programs saved in .py files</li>
+  </ol>
+
+  <hr>
+
+  <h2>Interactive Mode (Python Shell)</h2>
+
+  <h3>Starting the Python Shell</h3>
+  <p>Open your terminal and type:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>python</code></li>
+    <li><strong>Mac/Linux:</strong> <code>python3</code></li>
+  </ul>
+
+  <p>You should see something like this:</p>
+  <pre>
+Python 3.13.1 (main, Jun 7 2023, 00:00:00)
+[GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt;
+  </pre>
+  <p>Or, on Windows, you'll probably see:
+  <pre>
+Python 3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt;
+  </pre>
+
+  <p>The <code>&gt;&gt;&gt;</code> prompt means Python is ready for your commands!</p>
+
+  <h3>Using the Python Shell</h3>
+  <p>Try these commands:</p>
+  <pre>
+&gt;&gt;&gt; print("Hello, World!")
+Hello, World!
+
+&gt;&gt;&gt; 2 + 2
+4
+
+&gt;&gt;&gt; name = "Coder"
+&gt;&gt;&gt; print(f"Hello, {name}!")
+Hello, Coder!
+  </pre>
+
+  <h3>Exiting the Python Shell</h3>
+  <p>To exit the Python shell, type:</p>
+  <pre>&gt;&gt;&gt; exit()</pre>
+  <p>Or press Ctrl+D (Mac/Linux) or Ctrl+Z then Enter (Windows)</p>
+
+  <hr>
+
+  <h2>Script Mode (Running .py Files)</h2>
+
+  <h3>Running a Python File</h3>
+  <p>To run a Python file, navigate to its folder in the terminal, then:</p>
+  <ul>
+    <li><strong>Windows:</strong> <code>python filename.py</code></li>
+    <li><strong>Mac/Linux:</strong> <code>python3 filename.py</code></li>
+  </ul>
+
+  <h3>Example: Running Your First Script</h3>
+  <ol>
+    <li>Create a file called <code>greet.py</code> with this content:
+      <pre>
+name = input("What's your name? ")
+print(f"Nice to meet you, {name}!")
+print("Welcome to Python programming!")
+      </pre>
+    </li>
+    <li>Save the file</li>
+    <li>In the terminal, navigate to the file's location</li>
+    <li>Run it:
+      <ul>
+        <li>Windows: <code>python greet.py</code></li>
+        <li>Mac/Linux: <code>python3 greet.py</code></li>
+      </ul>
+    </li>
+  </ol>
+
+  <hr>
+
+  <h2>Common Python Commands</h2>
+
+  <h3>Check Python Version</h3>
+  <pre>python --version</pre>
+  <p>Or on Mac/Linux:</p>
+  <pre>python3 --version</pre>
+
+  <h3>Run a Script with Arguments</h3>
+  <p>You can pass information to your Python script:</p>
+  <pre>python script.py argument1 argument2</pre>
+
+  <h3>Get Help</h3>
+  <pre>python --help</pre>
+
+  <hr>
+
+  <h2>Troubleshooting Common Issues</h2>
+
+  <h3>"Python is not recognized"</h3>
+  <p>This means Python isn't in your system's PATH. Try:</p>
+  <ul>
+    <li>Reinstalling Python and checking "Add to PATH" during installation</li>
+    <li>Using the full path to Python (like <code>C:\Python311\python.exe</code>)</li>
+    <li>Check our <a href="./python_installation.html">installation guide</a> for help</li>
+  </ul>
+
+  <h3>"No such file or directory"</h3>
+  <p>This means Python can't find your file. Make sure:</p>
+  <ul>
+    <li>You're in the correct folder (use <code>cd</code> to navigate)</li>
+    <li>The filename is spelled correctly (including .py extension)</li>
+    <li>Use <code>dir</code> (Windows) or <code>ls</code> (Mac/Linux) to see files in current folder</li>
+  </ul>
+
+  <h3>SyntaxError</h3>
+  <p>This means there's a mistake in your Python code. Check for:</p>
+  <ul>
+    <li>Missing colons (:) after if statements, loops, or function definitions</li>
+    <li>Incorrect indentation (Python uses spaces to organize code)</li>
+    <li>Unclosed quotes or parentheses</li>
+  </ul>
+
+  <hr>
+
+  <h2>Practice Exercises</h2>
+
+  <h3>Exercise 1: Calculator in Interactive Mode</h3>
+  <p>Open the Python shell and try these calculations:</p>
+  <pre>
+&gt;&gt;&gt; 15 + 7
+&gt;&gt;&gt; 100 - 33
+&gt;&gt;&gt; 12 * 8
+&gt;&gt;&gt; 50 / 5
+&gt;&gt;&gt; 2 ** 10  # This means 2 to the power of 10
+  </pre>
+
+  <h3>Exercise 2: Create and Run a Script</h3>
+  <ol>
+    <li>Create a file called <code>calculator.py</code></li>
+    <li>Add this code:
+      <pre>
+print("Simple Calculator")
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+print(f"{num1} + {num2} = {num1 + num2}")
+print(f"{num1} - {num2} = {num1 - num2}")
+print(f"{num1} * {num2} = {num1 * num2}")
+print(f"{num1} / {num2} = {num1 / num2}")
+      </pre>
+    </li>
+    <li>Run the script from your terminal</li>
+  </ol>
+
+  <hr>
+
+  <h2>Tips for Command Line Python</h2>
+  <ul>
+    <li><strong>Use the up arrow:</strong> Recall previous commands in both the terminal and Python shell</li>
+    <li><strong>Tab completion:</strong> Press Tab to autocomplete file names</li>
+    <li><strong>Copy and paste:</strong> Right-click in most terminals to paste code</li>
+    <li><strong>Clear screen:</strong> In Python shell, press Ctrl+L to clear the screen</li>
+  </ul>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <p>Now that you can run Python from the command line, try:</p>
+  <ul>
+    <li><a href="./first_steps.html">Creating more complex Python programs</a></li>
+    <li><a href="../notes/indexcoderogres.html">Following our Python lecture notes</a></li>
+    <li><a href="./debugging_guide.html">Learning how to debug Python code</a></li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>

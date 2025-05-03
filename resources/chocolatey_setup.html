@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Installing and Using Chocolatey - CoderOgres</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/chocolatey_setup.html -->
+  <h1>Installing and Using Chocolatey</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>What is Chocolatey?</h2>
+  <p>Chocolatey is a special type of software that programmers call a <em>package manager</em>. Similar to how a postal service worker's job is to handle packages in the mail, a package manager's job is to handle finding and downloading programs onto your computer. They are very helpful, as they perform a lot of the installation steps for you.</p>
+
+  <p>In this tutorial, you'll learn how to install and use Chocolatey. I'll guide you through the entire process, and you'll do some cool stuff on the command line! <em>I think Chocolatey is very valuable, but <u>using it is absolutely not a requirement</u>.</em>
+
+<hr>
+
+<h2>Installing Chocolatey</h2>
+<p><strong>NOTE:</strong> Chocolatey is for Windows computers only!</p>
+
+<h3>Step 1: Open the Windows Terminal as Administrator</h3>
+<ol>
+  <li>Click on the Windows Start button</li>
+  <li>Type "Terminal" (if on Windows 10 or below, type "PowerShell")</li>
+  <li>Right-click on "Terminal" in the search result (as above--if on Windows 10 or below, do this for "PowerShell")</li>
+  <li>Select "Run as administrator"</li>
+  <li>Click "Yes" when asked if you want to allow the app to make changes</li>
+</ol>
+
+<h3>Step 2: Check Your Execution Policy</h3>
+<p>Before we install Chocolatey, we need to make sure your PC will allow us to run it. We'll do that using a command! In the Terminal/PowerShell window, type (or paste) the following, and press Enter:</p>
+<pre>Get-ExecutionPolicy</pre>
+
+<p>If it says "Restricted", type (or paste) this command and press Enter:</p>
+<pre>Set-ExecutionPolicy AllSigned</pre>
+<p>or</p>
+<pre>Set-ExecutionPolicy Bypass -Scope Process</pre>
+
+<h3>Step 3: Install Chocolatey</h3>
+<p>Copy and paste this whole command into Terminal (or PowerShell), then press Enter:</p>
+<pre>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))</pre>
+
+<p>Wait for the installation to finish. You'll see a message saying Chocolatey is ready when it's done! <strong>Note</strong>: To use it, you'll have to repeat Step 1 again.</p>
+
+
+<h3>Step 4: Verify the Installation</h3>
+  <p>To make sure Chocolatey installed correctly, close your PowerShell window and open a new one as administrator. Then type:</p>
+  <pre>choco --version</pre>
+  <p>If you see a version number (like "1.2.0"), then Chocolatey installed successfully!</p>
+
+  <hr>
+
+  <h2>Using Chocolatey</h2>
+  <p>Now that you have Chocolatey installed, you can use it to install other programs easily!</p>
+
+  <h3>Basic Commands</h3>
+  <ul>
+    <li><strong>Search for a program:</strong> <pre>choco search python</pre></li>
+    <li><strong>Install a program:</strong> <pre>choco install python</pre> (Always run this as administrator!)</li>
+    <li><strong>Upgrade a program:</strong> <pre>choco upgrade python</pre></li>
+    <li><strong>List installed programs:</strong> <pre>choco list --local-only</pre></li>
+    <li><strong>Uninstall a program:</strong> <pre>choco uninstall python</pre></li>
+  </ul>
+
+  <h3>Always Run as Administrator</h3>
+  <p><strong>Important:</strong> Chocolatey commands need administrator privileges to work. Always open PowerShell as administrator before using Chocolatey!</p>
+
+  <h3>Saying Yes to Installation</h3>
+  <p>When you install a program, Chocolatey will ask you to confirm. You can type 'Y' and press Enter, or you can add <code>-y</code> to your command to automatically say yes:</p>
+  <pre>choco install python -y</pre>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <p>Now that you have Chocolatey installed, you can:</p>
+  <ul>
+    <li><a href="./chocolatey_python.html">Install Python using Chocolatey</a></li>
+    <li><a href="./chocolatey_nano.html">Install the Nano text editor using Chocolatey</a></li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>

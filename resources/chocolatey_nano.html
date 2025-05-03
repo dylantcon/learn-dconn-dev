@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Installing Nano with Chocolatey - CoderOgres</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/chocolatey_nano.html -->
+  <h1>Installing the Nano Text Editor with Chocolatey</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>Before You Begin</h2>
+  <p>This guide assumes you already have Chocolatey installed on your Windows computer. If you haven't installed Chocolatey yet, please follow our <a href="./chocolatey_setup.html">Chocolatey Setup Guide</a> first.</p>
+
+  <hr>
+
+  <h2>What is Nano?</h2>
+  <p>Nano is a simple text editor that works right in your command line. It's much easier to use than other command line editors, because the controls are simple. This is why I am recommending it, since I expect that you are all beginners! Nano should be all you need for this course--it will serve you well.</p>
+
+  <hr>
+
+  <h2>Installing Nano with Chocolatey</h2>
+
+  <h3>Step 1: Open Terminal (or PowerShell if not on Windows 11) as Administrator</h3>
+  <ol>
+    <li>Click on the Windows Start button</li>
+    <li>Type "Terminal" (or "PowerShell" if not on Windows 11)</li>
+    <li>Right-click on "Terminal" (or "Windows PowerShell" if not on Windows 11) in the search results</li>
+    <li>Select "Run as administrator"</li>
+    <li>Click "Yes" when asked if you want to allow the app to make changes</li>
+  </ol>
+
+  <h3>Step 2: Install Nano</h3>
+  <p>In Terminal (or PowerShell if not on Windows 11), type this command and press Enter:</p>
+  <pre>choco install nano -y</pre>
+
+  <p>The <code>-y</code> flag automatically answers "yes" to any questions during installation.</p>
+
+  <p>Wait for the installation to complete. You'll see a message saying the installation was successful when it's done!</p>
+
+  <h3>Step 3: Verify the Installation</h3>
+  <p>To make sure Nano installed correctly, type:</p>
+  <pre>nano --version</pre>
+
+  <p>If you see information about the Nano version, then it installed successfully!</p>
+
+  <hr>
+
+  <h2>Using Nano</h2>
+  <p>Here's a quick introduction to using Nano:</p>
+
+  <h3>Creating or Opening a File</h3>
+  <p>To create a new file or open an existing one, type:</p>
+  <pre>nano filename.py</pre>
+  <p>Replace "filename.py" with the name of the file you want to create or edit.</p>
+
+  <h3>Basic Nano Commands</h3>
+  <p>In Nano, commands use the Ctrl key (shown as ^ in Nano). Here are the most important ones:</p>
+  <ul>
+    <li><strong>^O (Ctrl+O):</strong> Save the file</li>
+    <li><strong>^X (Ctrl+X):</strong> Exit Nano</li>
+    <li><strong>^K (Ctrl+K):</strong> Cut (delete) the current line</li>
+    <li><strong>^U (Ctrl+U):</strong> Paste text</li>
+    <li><strong>^W (Ctrl+W):</strong> Search for text</li>
+    <li><strong>^G (Ctrl+G):</strong> Get help</li>
+  </ul>
+
+  <p>These commands are also shown at the bottom of the Nano editor screen for easy reference.</p>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <p>Now that you have Nano installed, you can:</p>
+  <ul>
+    <li><a href="./using_nano.html">Learn more about using the Nano text editor</a></li>
+    <li><a href="./first_steps.html">Create your first Python program using Nano</a></li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>

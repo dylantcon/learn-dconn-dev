@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Using the Nano Text Editor - CoderOgres</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <!-- /var/www/learn.dconn.dev/resources/using_nano.html -->
+  <h1>Using the Nano Text Editor</h1>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
+  <h2>What is Nano?</h2>
+  <p>Nano is a simple text editor that works directly in your command line or terminal. It's one of the easiest command-line editors to learn and use, making it perfect for beginners.</p>
+
+  <hr>
+
+  <h2>Opening Nano</h2>
+  <p>To open Nano and create a new file or edit an existing one:</p>
+  <pre>nano filename.py</pre>
+  <p>Replace "filename.py" with the name of your file. If the file doesn't exist yet, Nano will create it when you save.</p>
+
+  <p>You can also open Nano without specifying a file:</p>
+  <pre>nano</pre>
+  <p>This opens a blank document that you can save later.</p>
+
+  <hr>
+
+  <h2>Understanding the Nano Interface</h2>
+  <img src="../images/nano_interface.png" alt="Nano Editor Interface" width="600">
+  <p><em>Note: If you don't see this image, don't worry! The image isn't necessary to learn Nano.</em></p>
+
+  <p>The Nano interface has three main parts:</p>
+  <ol>
+    <li><strong>Title bar</strong> (top): Shows the version of Nano, the current filename, and whether the file has been modified</li>
+    <li><strong>Edit area</strong> (middle): This is where you type and edit your text</li>
+    <li><strong>Shortcut menu</strong> (bottom two lines): Shows the most common keyboard commands</li>
+  </ol>
+
+  <p>In the shortcut menu, the "^" symbol means the Ctrl key. For example, "^X" means "press Ctrl and X together".</p>
+
+  <hr>
+
+  <h2>Basic Navigation</h2>
+  <p>Moving around in Nano is simple:</p>
+  <ul>
+    <li>Use the <strong>arrow keys</strong> to move the cursor up, down, left, and right</li>
+    <li>Use <strong>Page Up</strong> and <strong>Page Down</strong> to scroll through long files</li>
+    <li>Use <strong>Home</strong> to go to the beginning of the current line</li>
+    <li>Use <strong>End</strong> to go to the end of the current line</li>
+  </ul>
+
+  <hr>
+
+  <h2>Essential Commands</h2>
+  <p>Here are the most important commands you'll use in Nano:</p>
+
+  <h3>File Operations</h3>
+  <ul>
+    <li><strong>Ctrl+O</strong>: Save the file (Write Out)
+      <ul>
+        <li>After pressing Ctrl+O, you can change the filename if you want</li>
+        <li>Press Enter to confirm</li>
+      </ul>
+    </li>
+    <li><strong>Ctrl+X</strong>: Exit Nano
+      <ul>
+        <li>If you've made changes, Nano will ask if you want to save them</li>
+        <li>Press Y for yes, N for no, or Ctrl+C to cancel</li>
+      </ul>
+    </li>
+    <li><strong>Ctrl+R</strong>: Insert the contents of another file at the cursor position</li>
+  </ul>
+
+  <h3>Editing</h3>
+  <ul>
+    <li><strong>Ctrl+K</strong>: Cut (delete) the current line into the cut buffer</li>
+    <li><strong>Ctrl+U</strong>: Paste the cut buffer at the cursor position</li>
+    <li><strong>Ctrl+6</strong>: Mark text (start selecting)
+      <ul>
+        <li>Use arrow keys to select text after pressing Ctrl+6</li>
+        <li>Press Ctrl+K to cut the selected text</li>
+      </ul>
+    </li>
+    <li><strong>Ctrl+_</strong>: Go to a specific line number (type the number and press Enter)</li>
+    <li><strong>Ctrl+\</strong>: Search and replace</li>
+  </ul>
+
+  <h3>Other Useful Commands</h3>
+  <ul>
+    <li><strong>Ctrl+G</strong>: Show help menu</li>
+    <li><strong>Ctrl+C</strong>: Show cursor position (line number, column, character)</li>
+    <li><strong>Ctrl+W</strong>: Search for text</li>
+  </ul>
+
+  <hr>
+
+  <h2>Example: Creating a Python File with Nano</h2>
+  <p>Let's create a simple Python program using Nano:</p>
+
+  <ol>
+    <li>Open Nano to create a new Python file:
+      <pre>nano hello.py</pre>
+    </li>
+    <li>Type the following Python code:
+      <pre>
+print("Hello, world!")
+name = input("What's your name? ")
+print(f"Nice to meet you, {name}!")
+      </pre>
+    </li>
+    <li>Save the file by pressing <strong>Ctrl+O</strong>, then press <strong>Enter</strong> to confirm</li>
+    <li>Exit Nano by pressing <strong>Ctrl+X</strong></li>
+    <li>Run your Python program:
+      <pre>python hello.py</pre>
+    </li>
+  </ol>
+
+  <hr>
+
+  <h2>Tips for Using Nano</h2>
+  <ul>
+    <li><strong>Use the help menu:</strong> If you forget a command, press Ctrl+G to see all available commands</li>
+    <li><strong>Line numbers:</strong> To see line numbers while editing, use the -l option: <code>nano -l filename.py</code></li>
+    <li><strong>Backup files:</strong> Nano can create backup files automatically with the -B option: <code>nano -B filename.py</code></li>
+    <li><strong>Syntax highlighting:</strong> Some versions of Nano support syntax highlighting for programming languages</li>
+  </ul>
+
+  <hr>
+
+  <h2>What's Next?</h2>
+  <p>Now that you know how to use Nano, try:</p>
+  <ul>
+    <li><a href="./first_steps.html">Creating your first Python program</a></li>
+    <li><a href="./python_command_line.html">Learning more about running Python from the command line</a></li>
+  </ul>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+</body>
+</html>
