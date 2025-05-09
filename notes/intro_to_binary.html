@@ -7,7 +7,7 @@
 <body>
   <h1>Introduction to Binary</h1>
   <h2>Lecture One</h2>
-  <p><strong>Keywords:</strong> <em>computer, input, storage, data, processing, output, abacus, base, decimal, binary, roman numerals, exponents</em></p>
+  <p><strong>Keywords:</strong> <em>computer, input, storage, data, processing, output, RAM, CPU, primary memory, abacus, base, decimal, binary, roman numerals, exponents</em></p>
 
   <hr>
   <h3>Video Played in Lecture</h3>
@@ -42,7 +42,7 @@
 
   <hr>
 
-  <p>Let's turn our focus to today's video. We'll investigate the <i>precise</i> definition of a computer now! Go ahead and watch <strong>0:24-2:31</strong> of today's video.</p>
+  <p>Let's turn our focus to today's video. We'll investigate the <i>precise</i> definition of a computer now! Go ahead and watch <strong>[0:24-2:31]</strong> of today's video.</p>
   
   <p>If you initially said that <b>my claim was false, great job! That's correct.</b> If you initially said that <b>my claim was true, no worries!</b> Let me explain why a microwave actually IS a computer, using the definition we just saw from the video. Recall, a computer does four things:</p>
 <ol>
@@ -52,11 +52,191 @@
   <li><b>Output Results</b></li>
 </ol>
 
-<p>A microwave actually does all four of these every time that you use it! When you place food into the microwave, it <b>takes the food as input (1)</b>. Then, it <b>stores that food (2)</b> inside the compartment. After this has happened, the microwave then begins to <b>process the food (3)</b> by rotating and heating it. After the food is cooked, it <b>outputs the food (4)</b>, so that you can eat it!</p> 
+  <p>A microwave actually does all four of these every time that you use it! When you place food into the microwave, it <b>takes the food as input (1)</b>. Then, it <b>stores that food (2)</b> inside the compartment. After this has happened, the microwave then begins to <b>process the food (3)</b> by rotating and heating it. After the food is cooked, it <b>outputs the food (4)</b>, so that you can eat it!</p> 
 
-<p>In this example, can anyone tell me what our computer's data is? Click the tab below to see the answer.</p>
+  <p>In this example, can anyone tell me what our computer's data is? Click the tab below to see the answer.</p>
 
-<details><strong>In this case, the data is the food we put inside!</strong></details>
+  <details><summary><strong>Click to check your answer!</strong></summary><strong>In this case, the data is the food we put inside!</strong></details>
+
+<h3>The Components of a Computer</h3>
+
+  <p>Now, let's explore what's inside a computer! Watch <strong>[0:58-2:31]</strong> to learn about two essential components.</p>
+
+  <p><strong>RAM (Random Access Memory)</strong> is like your computer's short-term memory - it temporarily stores data that your computer is actively using. Think of it like your desk when you're doing homework: you keep the books and papers you need right now within easy reach. Programmers call this your computer's <em>primary memory</em>, because it works closely with the component below to accomplish tasks.</p>
+
+  <p><strong>CPU (Central Processing Unit)</strong> is the "brain" of your computer. Just like your brain receives information from your body, processes it, makes decisions, the CPU processes all the data and instructions that make your computer work. The CPU is fed data from your computer's <em>primary memory</em>, and then it <em>processes</em> that data when performing some task.</p>
+
+  <p>There are many other components inside a computer, but we'll focus on these two for today. This is because knowing how the CPU and RAM work together will strengthen your understanding in the concepts that will follow. If you'd like to know more about how they work together, feel free to ask some questions! I took a course called <em>Computer Organization</em>, where I studied these components in greater detail. It's quite fascinating, actually!</p>
+
+  <hr>
+
+  <h3>The Abacus</h3>
+  
+  <p>You might be surprised to learn that one of the earliest computers didn't use electricity at all! Watch <strong>[2:32-6:38]</strong> to discover how the abacus works as a computer.</p>
+
+  <p>Now that we've watched the clip, let's do some reflection. Do you think that now, if you picture a computer in your head, what appears might be a bit different than at the beginning of this lecture? I certainly hope so! Computers as a concept are quite abstract; so long as an object satisfies the four requirements listed, we can say it is a computer. It's okay if this takes some getting used to--I know it took me a little bit to grasp when I first started. Let's list why <strong>an abacus</strong> satisfies the four characteristics of a computer:</p>
+  <ol>
+    <li><strong>Take Input: </strong>When you use the hands to move the beads left or right, that is input that we are giving to this computer.</li>
+    <li><strong>Store Data: </strong>Each of the beads on the abacus represents some data value. When you move the beads to the right, the abacus stores the value of the bead for future reference.</li>
+    <li><strong>Process Data: </strong>By pushing the bead to the right, we resulting value that the abacus comutes for us. It is the very action of moving the beads that serves as "processing data".</li>
+    <li><strong>Output Result: </strong>By looking at the beads pushed to the right side of the abacus, we can see the result of the abacus' computation. Although it's quite simple to us, merchants and mathematicians relied on this bead-based computation for centuries!</li>
+  </ol>
+
+  <p>To solidify this new knowledge, I challenge you to list the simplest object you can think of, that satisfies the requirements of a computer! There are many possibilities (check the contents of your room, I bet you'll find a candidate)!</p>
+
+  <h4>Understanding the Decimal System</h4>
+  
+  <p>Before we dive deeper, let's think about how we normally count. When you see the number 132, you probably don't think much about it, but there's actually a pattern hiding in plain sight!</p>
+
+  <p>The number 132 is really: <b>100 + 30 + 2</b></p>
+
+  <p>Let's break this down even further. Each digit in 132 has a specific "place value":</p>
+  <ul>
+    <li>The 1 is in the "hundreds" place: 1 × 100 = 100</li>
+    <li>The 3 is in the "tens" place: 3 × 10 = 30</li>
+    <li>The 2 is in the "ones" place: 2 × 1 = 2</li>
+  </ul>
+
+  <h4>Powers of 10</h4>
+  
+  <p>Here's where it gets interesting! We can rewrite those place values using powers of 10:</p>
+  <ul>
+    <li>100 = 10²</li>
+    <li>10 = 10¹</li>
+    <li>1 = 10⁰</li>
+  </ul>
+
+  <p>So 132 = (1 × 10²) + (3 × 10¹) + (2 × 10⁰)</p>
+
+  <p>This is called the <em>decimal</em> system because it uses 10 different digits (0-9). "Deci" means 10!</p>
+
+  <h4>What About Other Number Systems?</h4>
+  
+  <p>Could we use a different base instead of 10? Absolutely! We could create a base-3 system using only digits 0, 1, and 2. Or base-5 using digits 0-4. The possibilities are endless!</p>
+
+  <p>But why would we want to use a different base? Well, computers have a very good reason for using base-2...</p>
+
+  <hr>
+
+  <h3>Base 2 - Binary</h3>
+
+  <p>Watch <strong>[6:51-11:35]</strong> to discover the binary number system!</p>
+
+  <p>Binary uses only two digits: 0 and 1. This makes it perfect for computers because electronic circuits can easily represent two states: OFF (0) or ON (1).</p>
+
+  <p>Just like with decimal numbers, binary numbers use place values, but with powers of 2:</p>
+  <ul>
+    <li>2⁰ = 1</li>
+    <li>2¹ = 2</li>
+    <li>2² = 4</li>
+    <li>2³ = 8</li>
+    <li>2⁴ = 16</li>
+  </ul>
+
+  <h4>Make Your Own Binary Cards</h4>
+
+  <p>Now it's time for a hands-on activity! Watch <strong>[12:03-12:49]</strong> for instructions.</p>
+
+  <p><strong>You'll need:</strong></p>
+  <ul>
+    <li>5 index cards or pieces of paper</li>
+    <li>A marker or pen</li>
+  </ul>
+
+  <p><strong>Instructions:</strong></p>
+  <ol>
+    <li>Write "16" on the first card (2⁴)</li>
+    <li>Write "8" on the second card (2³)</li>
+    <li>Write "4" on the third card (2²)</li>
+    <li>Write "2" on the fourth card (2¹)</li>
+    <li>Write "1" on the fifth card (2⁰)</li>
+  </ol>
+
+  <p>These cards will help you convert decimal numbers to binary!</p>
+
+  <hr>
+
+  <h3>Binary Practice Exercises</h3>
+
+  <p>Watch <strong>[14:45-16:47]</strong> to learn how to use your cards.</p>
+
+  <p>Now, let's practice converting decimal numbers to binary! Use your cards to represent these numbers:</p>
+
+  <ol>
+    <li>Convert 7 to binary</li>
+    <li>Convert 8 to binary</li>
+    <li>Convert 11 to binary</li>
+    <li>Convert 16 to binary</li>
+    <li>Convert 15 to binary</li>
+    <li>Convert 23 to binary</li>
+    <li>Convert 29 to binary</li>
+    <li>Challenge: Convert 32 to binary (Hint: You might need to think beyond your current cards!)</li>
+  </ol>
+
+  <details>
+    <summary><strong>Click to check your answers:</strong></summary>
+    <ol>
+      <li>7 = 111 (4 + 2 + 1)</li>
+      <li>8 = 1000</li>
+      <li>11 = 1011 (8 + 2 + 1)</li>
+      <li>16 = 10000</li>
+      <li>15 = 1111 (8 + 4 + 2 + 1)</li>
+      <li>23 = 10111 (16 + 4 + 2 + 1)</li>
+      <li>29 = 11101 (16 + 8 + 4 + 1)</li>
+      <li>32 = 100000 (You need a 6th position!)</li>
+    </ol>
+  </details>
+
+  <hr>
+
+  <h3>The Circle Cutting Problem</h3>
+
+  <p>Ready for a fun challenge? Watch <strong>[19:10-end]</strong> to learn about the circle cutting problem!</p>
+
+  <img src="../images/l1_circle.jpg" alt="Circle for cutting problem" width="600">
+
+  <p><strong>The Rules:</strong></p>
+  <ul>
+    <li>Draw straight lines across a circle</li>
+    <li>Each line must create the maximum number of new regions possible</li>
+    <li>Lines should intersect within the circle when possible</li>
+  </ul>
+
+  <p><strong>The Challenge:</strong> How many regions can you create with each additional cut? Can you find a pattern?</p>
+
+  <p>This isn't like cutting a pizza where all slices are equal - we're trying to maximize the number of pieces with each cut!</p>
+
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>Number of Cuts</th>
+      <th>Maximum Regions</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>?</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>?</td>
+    </tr>
+  </table>
+
+  <p>Can you figure out the pattern? Try drawing it yourself and see what happens!</p>
+
+</body>
+</html>
 
 </body>
 </html>
