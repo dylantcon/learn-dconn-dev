@@ -3,16 +3,24 @@
 <head>
   <title>Introduction to Binary</title>
   <meta charset="UTF-8">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <h1>Introduction to Binary</h1>
   <h2>Lecture One</h2>
   <p><strong>Keywords:</strong> <em>computer, input, storage, data, processing, output, RAM, CPU, primary memory, abacus, base, decimal, binary, roman numerals, exponents</em></p>
+  <p><strong>Required Materials:</strong> pencil, paper, scissors (optional)</p>
 
   <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+  <hr>
+
   <h3>Video Played in Lecture</h3>
 
-  <video width="1280" height="720" controls>
+  <video id="lectureVideo" width="1280" height="720" controls>
     <source src="../videos/intro_to_binary.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -42,7 +50,7 @@
 
   <hr>
 
-  <p>Let's turn our focus to today's video. We'll investigate the <i>precise</i> definition of a computer now! Go ahead and watch <strong>[0:24-2:31]</strong> of today's video.</p>
+  <p>Let's turn our focus to today's video. We'll investigate the <i>precise</i> definition of a computer now! Go ahead and watch <strong><a href="#" class="timestamp-link">[0:24-2:31]</a></strong> of today's video.</p>
   
   <p>If you initially said that <b>my claim was false, great job! That's correct.</b> If you initially said that <b>my claim was true, no worries!</b> Let me explain why a microwave actually IS a computer, using the definition we just saw from the video. Recall, a computer does four things:</p>
 <ol>
@@ -60,7 +68,7 @@
 
 <h3>The Components of a Computer</h3>
 
-  <p>Now, let's explore what's inside a computer! Watch <strong>[0:58-2:31]</strong> to learn about two essential components.</p>
+  <p>Now, let's explore what's inside a computer! Watch <strong><a href="#" class="timestamp-link">[0:58-2:31]</a></strong> to learn about two essential components.</p>
 
   <p><strong>RAM (Random Access Memory)</strong> is like your computer's short-term memory - it temporarily stores data that your computer is actively using. Think of it like your desk when you're doing homework: you keep the books and papers you need right now within easy reach. Programmers call this your computer's <em>primary memory</em>, because it works closely with the component below to accomplish tasks.</p>
 
@@ -72,7 +80,7 @@
 
   <h3>The Abacus</h3>
   
-  <p>You might be surprised to learn that one of the earliest computers didn't use electricity at all! Watch <strong>[2:32-6:38]</strong> to discover how the abacus works as a computer.</p>
+  <p>You might be surprised to learn that one of the earliest computers didn't use electricity at all! Watch <strong><a href="#" class="timestamp-link">[2:32-6:38]</a></strong> to discover how the abacus works as a computer.</p>
 
   <p>Now that we've watched the clip, let's do some reflection. Do you think that now, if you picture a computer in your head, what appears might be a bit different than at the beginning of this lecture? I certainly hope so! Computers as a concept are quite abstract; so long as an object satisfies the four requirements listed, we can say it is a computer. It's okay if this takes some getting used to--I know it took me a little bit to grasp when I first started. Let's list why <strong>an abacus</strong> satisfies the four characteristics of a computer:</p>
   <ol>
@@ -84,9 +92,11 @@
 
   <p>To solidify this new knowledge, I challenge you to list the simplest object you can think of, that satisfies the requirements of a computer! There are many possibilities (check the contents of your room, I bet you'll find a candidate)!</p>
 
+  <hr>
+
   <h3>Number Systems</h3>
 
-  <p>We all know that counting is as fundamental of a skill as reading or writing. So much of our life revolves around numbers--we use them to understand the <em>passage of time</em>, to <em>track quantities</em>, and to <em>identify objects</em>. I know this is probably pretty obvious to most of you. However, computer scientists spend a significant amount of their time thinking about and working with numbers. That's why we'll work on strengthening our <em>foundational</em> knowledge of numbers, and at a higher level, number systems. In order to wield the power of modern computing, it is important that we have a rock-solid understanding of the rich history of numbers. For the subsection below, we'll need to watch <b>[6:39-11:42]</b>. Since this is a longer clip, we'll definitely take some pauses and discuss what we're learning.</p>
+  <p>We all know that counting is as fundamental of a skill as reading or writing. So much of our life revolves around numbers--we use them to understand the <em>passage of time</em>, to <em>track quantities</em>, and to <em>identify objects</em>. I know this is probably pretty obvious to most of you. However, computer scientists spend a significant amount of their time thinking about and working with numbers. That's why we'll work on strengthening our <em>foundational</em> knowledge of numbers, and at a higher level, number systems. In order to wield the power of modern computing, it is important that we have a rock-solid understanding of the rich history of numbers. For the subsection below, we'll need to watch <strong><a href="#" class="timestamp-link">[6:39-11:42]</a></strong>. Since this is a longer clip, we'll definitely take some pauses and discuss what we're learning.</p>
 
   <h4>Historical Number Systems</h4>
 
@@ -94,66 +104,310 @@
 
   <ul>
     <li><strong><a href="https://www.sciencedirect.com/science/article/abs/pii/S0003552106000525">Prehistoric Counting</a>: </strong>Archaeologists found hand stencils and a "dot-and-dash" system painted in the rock in Cosquer Cave, located in the Marseille region of France. These have been dated as far back as <b>27,000 BC</b>. Even when humans still dwelled in caves, they found a need to track quantities using a reliable method.</li>
-    <li><strong><a href=""></a>: </strong></li>
-    <li><strong><a href=""></a>: </strong></li>
-    <li><strong><a href=""></a>: </strong></li>
-    <li><strong><a href=""></a>: </strong></li>
+    <li><strong><a href="https://kartsci.org/kocomu/computer-history/history-abacus-ancient-computing/">Tally Marks on Sticks</a>: </strong>The Lebombo bone, dated to approximately <b>35,000 years ago</b>, is one of the oldest known tally sticks with 29 distinct notches. These counting aids were used to "record numbers, quantities, or even messages" across many ancient cultures. In medieval Europe, split tally sticks became an early form of record-keeping and even currency.</li>
+    <li><strong><a href="https://anetoday.org/goncalves-cuneiform-mathematics/">Cuneiform on Clay Tablets</a>: </strong>The Sumerians in Mesopotamia (<b>around 3500 BCE</b>) invented cuneiform writing that included sophisticated number systems. Their mathematical tablets show "a systematic approach to the transmission of mathematical knowledge and tools" using a base-60 (sexagesimal) system that influenced time measurement to this day.</li>
+    <li><strong><a href="https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/roman-numerals-their-origins-impact-and-limitations">Roman Numerals</a>: </strong>Developed around <b>500 BCE</b>, the Roman numeral system spread throughout Europe and remained the primary way of writing numbers for nearly 1,800 years. Despite limitations with multiplication and division, Roman engineering feats like roads and aqueducts demonstrate how they overcame these challenges in construction.</li>
+    <li><strong><a href="https://www.scienceabc.com/pure-sciences/how-did-decimals-evolve-and-why-did-we-come-up-with-it.html">Decimal Number System</a>: </strong>Our modern base-10 system likely originated from counting on ten fingers, with early evidence appearing in <b>ancient India, China, and Egypt</b>. By 500 BCE, the crucial invention of zero as a placeholder had occurred, completing the system that would eventually be adopted worldwide and form the foundation for modern computing.</li>
   </ul>
 
-
+  <p>As you can see, <b>humanity has a tendency to alter their counting methods and create new ones, when their situation requires it</b>. <u>This is quite important to understand, and you'll see why in a moment</u>! Let's take a deeper look at our current numbering system.</p>
 
   <h4>Understanding the Decimal System</h4>
   
-  <p>Before we dive deeper, let's think about how we normally count. When you see the number 132, you probably don't think much about it, but there's actually a pattern hiding in plain sight!</p>
+  <p>Before we dive deeper, let's think about how we normally count. When you see the number 347, you probably don't think much about it, but there's actually a pattern hiding in plain sight! It all has to do with the number of characters we use when counting (more on this later).</p>
 
-  <p>The number 132 is really: <b>100 + 30 + 2</b></p>
+  <p>The number 347 is really: <b>300 + 40 + 7</b></p>
 
-  <p>Let's break this down even further. Each digit in 132 has a specific "place value":</p>
+  <p>I'm pretty sure that all of you were already taught this in school. With that in mind, we're just doing some review. I promise that these explanations will come in handy when we start looking at the numbering system that computers use. So, let's break the representation of <b>347</b> down even further. Each digit in 347 has a specific "place value" (<b>e.g., ones, tens, hundreds, thousands, etc.</b>):</p>
   <ul>
-    <li>The 1 is in the "hundreds" place: 1 × 100 = 100</li>
-    <li>The 3 is in the "tens" place: 3 × 10 = 30</li>
-    <li>The 2 is in the "ones" place: 2 × 1 = 2</li>
+    <li>The 3 is in the "hundreds" place: 3 × 100 = 300</li>
+    <li>The 4 is in the "tens" place: 4 × 10 = 40</li>
+    <li>The 7 is in the "ones" place: 7 × 1 = 7</li>
   </ul>
 
   <h4>Powers of 10</h4>
   
-  <p>Here's where it gets interesting! We can rewrite those place values using powers of 10:</p>
+  <p>Here's where it gets interesting! We can rewrite the "place values" using powers of 10, which allows us to organize them in a uniform and predictable way:</p>
   <ul>
     <li>100 = 10²</li>
     <li>10 = 10¹</li>
     <li>1 = 10⁰</li>
   </ul>
 
-  <p>So 132 = (1 × 10²) + (3 × 10¹) + (2 × 10⁰)</p>
+  <p>So 347 = (3 × 10²) + (4 × 10¹) + (7 × 10⁰)</p>
 
-  <p>This is called the <em>decimal</em> system because it uses 10 different digits (0-9). "Deci" means 10!</p>
+<div class="drawing-container" style="margin: 20px 0;">
+  <h3>Interactive Drawing Canvas</h3>
+  <div style="border: 1px solid #ccc; background-color: white;">
+    <canvas id="drawingCanvas" width="800" height="400" style="cursor: crosshair;"></canvas>
+  </div>
+  <div style="margin-top: 10px;">
+    <button id="clearCanvas" style="padding: 5px 10px; margin-right: 10px;">Clear Canvas</button>
+    <input type="color" id="colorPicker" value="#000000" style="vertical-align: middle;">
+    <select id="brushSize" style="margin-left: 10px; padding: 3px;">
+      <option value="2">Thin</option>
+      <option value="5" selected>Medium</option>
+      <option value="10">Thick</option>
+    </select>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('drawingCanvas');
+    const ctx = canvas.getContext('2d');
+    const clearBtn = document.getElementById('clearCanvas');
+    const colorPicker = document.getElementById('colorPicker');
+    const brushSize = document.getElementById('brushSize');
+    
+    // Set initial canvas background to white
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    
+    // Drawing functions
+    function startDrawing(e) {
+      isDrawing = true;
+      const rect = canvas.getBoundingClientRect();
+      [lastX, lastY] = [e.clientX - rect.left, e.clientY - rect.top];
+    }
+    
+    function draw(e) {
+      if (!isDrawing) return;
+      
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      ctx.strokeStyle = colorPicker.value;
+      ctx.lineWidth = brushSize.value;
+      ctx.lineCap = 'round';
+      
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      
+      [lastX, lastY] = [x, y];
+    }
+    
+    function stopDrawing() {
+      isDrawing = false;
+    }
+    
+    function clearCanvas() {
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    // Event listeners
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    clearBtn.addEventListener('click', clearCanvas);
+    
+    // Mobile support
+    canvas.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      const touch = e.touches[0];
+      const mouseEvent = new MouseEvent('mousedown', {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(mouseEvent);
+    });
+    
+    canvas.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+      const touch = e.touches[0];
+      const mouseEvent = new MouseEvent('mousemove', {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(mouseEvent);
+    });
+    
+    canvas.addEventListener('touchend', function(e) {
+      const mouseEvent = new MouseEvent('mouseup');
+      canvas.dispatchEvent(mouseEvent);
+    });
+  });
+</script>
+
+  <p>This numbering (that I'm certain you're all very familiar with) is called the <em>decimal</em> system. That's because it uses 10 different digits (0-9). The root of the word, "deci", means 10! Computer scientists also call the decimal number system <em>base-10</em>, from the number of unique characters used to represent the numbers. We humans use base-10 because the majority of people have ten fingers on each hand!</p> 
+
+  <p>The concept of <em><b>base</b></em> within numbering systems is directly tied to the total unique characters that are available to use. The decimal number system is <em>base-10</em>, because like I mentioned above, there are 10 unique digits used when representing a number. The method shown above, where we break a number into exponents multiplied by values is <u>very useful</u>.</p>
+
+  <p>In fact, you can represent <b>any number</b> using this method, not just the decimal system! To put it in terms of formal mathematics (<b>WARNING</b>: NERDY STUFF AHEAD), we can write any number as <em>the summation of the products of its digits and their ordinal magnitude</em>. This idea is shown in the generalized mathematical formula below:</b>
+
+  <p><em><b>For decimal (base-10)</b></em>:</p>
+  \[N = \sum_{i=0}^{n} d_i \times 10^i\]
+
+  <p><em><b>For any base-b number system (including binary)</em></b>:</p>
+  \[N = \sum_{i=0}^{n} d_i \times b^i\]
+
+  <p>Where:</p>
+  <ul>
+    <li>The character <b>Σ</b> is a Greek letter called <em><b>sigma</b></em>, which is just a fancy way of repeatedly adding similar things, using a sort of "math blueprint". Instead of writing every addition manually, you can write a sigma, which represents a range (or group) of additions. The equality on the bottom tells you where the the range starts, and the character at the top tells you where the range ends. <b><u>Don't worry about knowing what this means, I just thought you might find it interesting to see the math behind it all.</u></b>
+    <li>\(N\) is the number</li>
+    <li>\(d_i\) is the digit in position \(i\)</li>
+    <li>\(b\) is the base (\(10\) for decimal, \(b\) for any other base-\(b\))</li>
+    <li>\(n\) is the highest position (\(\text{number of digits} - 1\))</li>
+  </ul>
+
+  <p>I don't expect anyone here to memorize these formulas or the formal definition describing it. Saying that a decimal number is "<em>...the summation of the products of its digits and their ordinal magnitude...</em>" is a mouthful <b>even for me</b>. However, I do want you to understand the overall idea--it will prove to be useful in the following sections.</p>
 
   <h4>What About Other Number Systems?</h4>
   
-  <p>Could we use a different base instead of 10? Absolutely! We could create a base-3 system using only digits 0, 1, and 2. Or base-5 using digits 0-4. The possibilities are endless!</p>
+  <p>Could we use a different base instead of 10? Absolutely! We could create a base-3 system using only digits 0, 1, and 2. Or base-5 using digits 0-4. What's cool is that we don't even have to use digits! We could use letters, emojis, shapes--as I've been saying, the only thing that determines a number system's base is the number of unique characters available for use, and the meaning we give them. The possibilities are truly endless!</p>
+  
+  <p>Computer scientists often use other number systems, including <em>base-8 (also called the <b>octal</b> number system)</em>, <em>base-16 (also called the <b>hexadecimal</b> number system)</em>, and of course, <em>base-2 (also called the <b>binary</b> number system)</em>. Don't worry about octal or hexadecimal just yet, today we're only going to focus on binary.</p>
 
-  <p>But why would we want to use a different base? Well, computers have a very good reason for using base-2...</p>
+  <p>One last question before we move on. Why exactly would we want to use a different base when representing numbers, particularly <b>base-2</b> (binary)? We already have the decimal system, and that works just fine for our human needs. Well, computers actually have a <b>VERY</b> good reason... What do you think it is? I'd love to hear your opinion, even if it's just a guess! I like to hear from my students.</p>
 
   <hr>
 
   <h3>Base 2 - Binary</h3>
 
-  <p>Watch <strong>[6:51-11:35]</strong> to discover the binary number system!</p>
+  <p>Watch <strong><a href="#" class="timestamp-link">[9:15-11:35]</a></strong> to discover the binary number system!</p>
 
-  <p>Binary uses only two digits: 0 and 1. This makes it perfect for computers because electronic circuits can easily represent two states: OFF (0) or ON (1).</p>
+  <p>Binary is the language of computers, and it's fascinatingly simple yet powerful. Instead of using ten different digits like our decimal system, binary uses only <em>two</em> digits: <strong>0</strong> and <strong>1</strong>. This is why it's called "binary" - from the Latin "binarius" meaning "consisting of two." These <em>b</em>inary dig<em>its</em>, which we commonly call "<em>bits</em>," are the fundamental building blocks of all digital information. When we group 8 bits together, we get what we call a "<em>byte</em>," which can represent 256 different values (2^8 = 256). Every piece of data in a computer - whether it's text, images, or videos - is ultimately stored as collections of these bits and bytes.</p>
 
-  <p>Just like with decimal numbers, binary numbers use place values, but with powers of 2:</p>
+  <h4>Counting in Binary</h4>
+
+  <p>Let's look at how counting works in both systems:</p>
+
+  <table border="1" cellpadding="8" cellspacing="0" style="margin: 15px auto; text-align: center;">
+    <tr>
+      <th>Decimal (Base 10)</th>
+      <th>Binary (Base 2)</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>1001</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>1010</td>
+    </tr>
+  </table>
+
+  <p>Notice something interesting? In decimal, once we hit 9, we run out of single digits. So what do we do? We add a new digit on the left (the "tens" place) and reset the right digit back to 0, giving us 10. As we keep counting, we go through 10, 11, 12... all the way to 19, before adding another "tens" value to get 20.</p>
+
+  <p>Binary works exactly the same way, but we run out of digits much faster! After 0 and 1, we have no more single digits left. So just like in decimal, we add a new digit on the left and reset, giving us "10" in binary. But don't confuse this with the decimal 10! In binary, "10" actually represents the decimal value 2.</p>
+
+  <p><em>Let's pause for a moment here.</em> I understand this might feel a bit strange at first—seeing "10" representing the number 2 can be confusing. Don't worry! This is completely normal when learning a new number system. Your brain is so used to "10" meaning "ten" that it takes a little practice to adjust. Just remember that "10" in binary means "one group of twos plus zero ones."</p>
+
+  <h4>Binary Place Values</h4>
+
+  <p>Remember our discussion about place values in decimal? Let's apply the same concept to binary, but instead of powers of 10, we'll use powers of 2:</p>
+
+  <div style="background-color: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0;">
+    <table style="margin: auto; text-align: center;">
+      <tr>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2<sup>7</sup></td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2<sup>6</sup></td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2<sup>5</sup></td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2<sup>4</sup></td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2<sup>3</sup></td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2<sup>2</sup></td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2<sup>1</sup></td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2<sup>0</sup></td>
+      </tr>
+      <tr>
+        <td style="font-size: 1.2em; padding: 5px 15px;">128</td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">64</td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">32</td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">16</td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">8</td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">4</td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">2</td>
+        <td style="font-size: 1.2em; padding: 5px 15px;">1</td>
+      </tr>
+    </table>
+  </div>
+
+  <p>Just like we read decimal numbers from left to right, we do the same with binary. Each position represents a power of 2, starting with 2<sup>0</sup> = 1 on the far right.</p>
+
+  <h4>The Binary Abacus: A Visual Way to Understand Binary</h4>
+
+  <p>As the video shows, we can think of an abacus to help us understand binary. Let's recall our discussion of the decimal abacus first:</p>
+
+  <p>In a decimal abacus, each column has 10 possible states (0-9), and as you move left, each column represents a value 10 times larger than the previous one. When the video says <em>"notice how each bar on the abacus has its own multiplier, with every higher being ten times larger than the one below it,"</em> it's highlighting a key feature of place-value systems.</p>
+
+  <p>Now, imagine a <strong>binary abacus</strong>. It would work the same way, except:</p>
   <ul>
-    <li>2⁰ = 1</li>
-    <li>2¹ = 2</li>
-    <li>2² = 4</li>
-    <li>2³ = 8</li>
-    <li>2⁴ = 16</li>
+    <li>Each column only has <em>two</em> possible states (0 or 1)</li>
+    <li>Each column to the left represents a value <em>twice</em> as large as the previous one</li>
   </ul>
+
+  <p>So instead of columns representing 1, 10, 100, etc. (powers of 10), in binary they represent 1, 2, 4, 8, 16, etc. (powers of 2).</p>
+
+  <h4>Converting Binary to Decimal</h4>
+
+  <p>Let's take a binary number like 101 and figure out what it means in decimal:</p>
+
+  <div style="background-color: #e0f7fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+    <p style="text-align: center; font-size: 1.2em;">
+      <strong>Binary 101 = ?</strong>
+    </p>
+    <p>Working right to left:</p>
+    <ul>
+      <li>Rightmost digit: 1 in the 2<sup>0</sup> (ones) place = 1 × 1 = 1</li>
+      <li>Middle digit: 0 in the 2<sup>1</sup> (twos) place = 0 × 2 = 0</li>
+      <li>Leftmost digit: 1 in the 2<sup>2</sup> (fours) place = 1 × 4 = 4</li>
+    </ul>
+    <p>Adding them up: 4 + 0 + 1 = 5</p>
+    <p style="text-align: center; font-size: 1.2em;">
+      <strong>Therefore, binary 101 = decimal 5</strong>
+    </p>
+  </div>
+
+  <p>As the video explains: <em>"So, if we have the binary number 101, this means that we have 1 four, 0 twos, and 1 one. Add all of these together, and we get the number 5 in decimal."</em></p>
 
   <h4>Make Your Own Binary Cards</h4>
 
-  <p>Now it's time for a hands-on activity! Watch <strong>[12:03-12:49]</strong> for instructions.</p>
+  <p>Now it's time for a hands-on activity! Watch <strong><a href="#" class="timestamp-link">[11:35-15:13]</a></strong> for instructions.</p>
 
   <p><strong>You'll need:</strong></p>
   <ul>
@@ -170,91 +424,465 @@
     <li>Write "1" on the fifth card (2⁰)</li>
   </ol>
 
-  <p>These cards will help you convert decimal numbers to binary!</p>
+  <p>These cards will help you convert decimal numbers to binary! Arrange them in order from left to right (16, 8, 4, 2, 1) and we'll be ready for some binary practice.</p>
 
-  <hr>
+  <h4>Binary Practice Exercises</h4>
 
-  <h3>Binary Practice Exercises</h3>
-
-  <p>Watch <strong>[14:45-16:47]</strong> to learn how to use your cards.</p>
+  <p>Watch <strong><a href="#" class="timestamp-link">[14:45-16:47]</a></strong> to learn how to use your cards.</p>
 
   <p>Now, let's practice converting decimal numbers to binary! Use your cards to represent these numbers:</p>
 
   <ol>
-    <li>Convert 7 to binary</li>
-    <li>Convert 8 to binary</li>
-    <li>Convert 11 to binary</li>
-    <li>Convert 16 to binary</li>
-    <li>Convert 15 to binary</li>
-    <li>Convert 23 to binary</li>
-    <li>Convert 29 to binary</li>
-    <li>Challenge: Convert 32 to binary (Hint: You might need to think beyond your current cards!)</li>
+    <li>Convert 7 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>7 = 111 (4 + 2 + 1)</p>
+        <p>To represent 7, you would use cards 4, 2, and 1. In binary, this is 111.</p>
+      </details>
+    </li>
+    <li>Convert 8 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>8 = 1000</p>
+        <p>To represent 8, you would use only the 8 card. In binary, this is 1000.</p>
+      </details>
+    </li>
+    <li>Convert 11 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>11 = 1011 (8 + 2 + 1)</p>
+        <p>To represent 11, you would use cards 8, 2, and 1. In binary, this is 1011.</p>
+      </details>
+    </li>
+    <li>Convert 16 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>16 = 10000</p>
+        <p>To represent 16, you would need a new card for 16 (which we have in our set). In binary, this is 10000.</p>
+      </details>
+    </li>
+    <li>Convert 15 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>15 = 1111 (8 + 4 + 2 + 1)</p>
+        <p>To represent 15, you would use cards 8, 4, 2, and 1. In binary, this is 1111.</p>
+      </details>
+    </li>
+    <li>Convert 23 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>23 = 10111 (16 + 4 + 2 + 1)</p>
+        <p>To represent 23, you would use cards 16, 4, 2, and 1. In binary, this is 10111.</p>
+      </details>
+    </li>
+    <li>Convert 29 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>29 = 11101 (16 + 8 + 4 + 1)</p>
+        <p>To represent 29, you would use cards 16, 8, 4, and 1. In binary, this is 11101.</p>
+      </details>
+    </li>
+    <li>Challenge: Convert 32 to binary (Hint: You might need to think beyond your current cards!)
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>32 = 100000</p>
+        <p>To represent 32, you would need a 6th card with the value 32 (2^5). In binary, this is 100000.</p>
+      </details>
+    </li>
+  </ol>
+  
+  <p>Want more practice? Try these additional numbers:</p>
+  
+  <ol start="9">
+    <li>Convert 9 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>9 = 1001 (8 + 1)</p>
+        <p>To represent 9, you would use cards 8 and 1. In binary, this is 1001.</p>
+      </details>
+    </li>
+    <li>Convert 14 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>14 = 1110 (8 + 4 + 2)</p>
+        <p>To represent 14, you would use cards 8, 4, and 2. In binary, this is 1110.</p>
+      </details>
+    </li>
+    <li>Convert 21 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>21 = 10101 (16 + 4 + 1)</p>
+        <p>To represent 21, you would use cards 16, 4, and 1. In binary, this is 10101.</p>
+      </details>
+    </li>
+    <li>Convert 25 to binary
+      <details>
+        <summary><strong>Click to check your answer:</strong></summary>
+        <p>25 = 11001 (16 + 8 + 1)</p>
+        <p>To represent 25, you would use cards 16, 8, and 1. In binary, this is 11001.</p>
+      </details>
+    </li>
   </ol>
 
-  <details>
-    <summary><strong>Click to check your answers:</strong></summary>
-    <ol>
-      <li>7 = 111 (4 + 2 + 1)</li>
-      <li>8 = 1000</li>
-      <li>11 = 1011 (8 + 2 + 1)</li>
-      <li>16 = 10000</li>
-      <li>15 = 1111 (8 + 4 + 2 + 1)</li>
-      <li>23 = 10111 (16 + 4 + 2 + 1)</li>
-      <li>29 = 11101 (16 + 8 + 4 + 1)</li>
-      <li>32 = 100000 (You need a 6th position!)</li>
-    </ol>
-  </details>
+  <h4>Why Binary Matters</h4>
+
+  <p>Now that we've practiced working with binary, you might be wondering: <em>"Okay, I get how it works, but why does this matter?"</em> Great question! It's time for another video clip, let's watch <strong><a href="#" class="timestamp-link">[15:13-17:47]</a></strong>, where we'll learn why binary is important for computers.</p>
+
+  <p>Binary matters because of how computers work at their most fundamental level. Electronic circuits have only two reliable states: <strong>OFF (0)</strong> or <strong>ON (1)</strong>. It's perfect for computers because electronic components like transistors can either be "off" (no electricity flowing) or "on" (electricity flowing). This makes binary the natural language of computing!</p>
+
+  <p>Here's why binary is so important:</p>
+
+  <ul>
+    <li><strong>It's the foundation of all computing:</strong> Every piece of data in your computer, phone, or gaming console is ultimately stored as patterns of 0s and 1s.</li>
+    <li><strong>It's reliable:</strong> With only two states, there's less room for error in electronic systems.</li>
+    <li><strong>It's efficient:</strong> Complex mathematical operations can be performed using simple electronic circuits. All we have to do is think about numbers in a slightly different way!</li>
+  </ul>
+
+  <p>Think about this: every photo you've taken, every game you've played, every message you've sent—all of these are ultimately just collections of binary digits (bits). Pretty amazing, right? It's incredible to think about the amount of effort and learning that was done to put all of this in place!</p>
+
+  <p><b>Bonus</b>: In the box below, I have a video of an interesting wooden model that someone built, that counts in binary! All he has to do is flip the mechanism on the right-most side, and it handles the rest. I thought this was really neat, maybe you all will as well.</p>
+
+  <hr>
+
+  <h4>Mechanical Binary Counter - Woodwork Model</h3>
+  <video width="1280" height="720" controls>
+    <source src="../videos/mechanical_binary_counter.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <hr>
 
   <h3>The Circle Cutting Problem</h3>
 
-  <p>Ready for a fun challenge? Watch <strong>[19:10-end]</strong> to learn about the circle cutting problem!</p>
+  <p>Ready for a fun challenge? Watch <strong><a href="#" class="timestamp-link">[17:47-19:13]</a></strong> to learn about the circle cutting problem!</p>
 
   <img src="../images/l1_circle.jpg" alt="Circle for cutting problem" width="600">
+
+  <p>Let's take a mental break from binary and have some fun with a different kind of puzzle. Imagine you have a circular pizza (or pancake, if you prefer breakfast food). <strong>Here's the twist:</strong> instead of cutting it into equal slices like we normally would, we're going to try to create as many different pieces as possible with each straight line cut.</p>
 
   <p><strong>The Rules:</strong></p>
   <ul>
     <li>Draw straight lines across a circle</li>
     <li>Each line must create the maximum number of new regions possible</li>
-    <li>Lines should intersect within the circle when possible</li>
+    <li>Lines should intersect with previous lines <em>within</em> the circle when possible</li>
+    <li>No two lines can be parallel</li>
+    <li>No three lines can intersect at the same point</li>
   </ul>
 
   <p><strong>The Challenge:</strong> How many regions can you create with each additional cut? Can you find a pattern?</p>
 
-  <p>This isn't like cutting a pizza where all slices are equal - we're trying to maximize the number of pieces with each cut!</p>
+  <p>Let's start tracking our results:</p>
 
-  <table border="1" cellpadding="5">
+  <table border="1" cellpadding="5" style="margin: 15px auto; text-align: center;">
     <tr>
       <th>Number of Cuts</th>
       <th>Maximum Regions</th>
+      <th>New Regions Added</th>
     </tr>
     <tr>
       <td>0</td>
       <td>1</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>1</td>
       <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>2</td>
       <td>4</td>
+      <td>2</td>
     </tr>
     <tr>
       <td>3</td>
+      <td>?</td>
       <td>?</td>
     </tr>
     <tr>
       <td>4</td>
       <td>?</td>
+      <td>?</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>?</td>
+      <td>?</td>
     </tr>
   </table>
 
-  <p>Can you figure out the pattern? Try drawing it yourself and see what happens!</p>
+  <p>Let's think step by step:</p>
 
-</body>
-</html>
+  <div style="background-color: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0;">
+    <ul>
+      <li><strong>Starting point:</strong> With 0 cuts, we obviously have just 1 region (the whole circle).</li>
+      <li><strong>First cut:</strong> A single straight line divides the circle into 2 regions.</li>
+      <li><strong>Second cut:</strong> If we make sure our second line crosses the first one, we get 4 regions.</li>
+      <li><strong>Third cut:</strong> For maximum regions, this line should cross both previous lines, but not at their intersection point. How many regions will we have now?</li>
+      <li><strong>Fourth cut:</strong> This line should cross all three previous lines, again avoiding existing intersection points. What's our total now?</li>
+    </ul>
+  </div>
+
+  <p><strong>Hint:</strong> Drawing this out on paper will really help!</p>
+
+  <details>
+    <summary><strong>Click to reveal the answer for 3 cuts</strong></summary>
+    <p>With 3 cuts (where each cut crosses all previous cuts), we get 7 regions!</p>
+    <p>We started with 4 regions from our first two cuts. The third cut can cross both previous lines, creating 3 new regions. So 4 + 3 = 7 regions total.</p>
+    <img src="../images/circle_3cuts.jpg" alt="Circle with 3 cuts showing 7 regions" width="200" style="display: block; margin: 10px auto;">
+  </details>
+
+  <details>
+    <summary><strong>Click to reveal the answer for 4 cuts</strong></summary>
+    <p>With 4 cuts (where each cut crosses all previous cuts), we get 11 regions!</p>
+    <p>We had 7 regions from our first three cuts. The fourth cut can cross all three previous lines, creating 4 new regions. So 7 + 4 = 11 regions total.</p>
+    <img src="../images/circle_4cuts.jpg" alt="Circle with 4 cuts showing 11 regions" width="200" style="display: block; margin: 10px auto;">
+  </details>
+
+  <h4>The Pattern</h4>
+
+  <p>Do you see a pattern forming? Let's update our table with what we've discovered:</p>
+
+  <table border="1" cellpadding="5" style="margin: 15px auto; text-align: center;">
+    <tr>
+      <th>Number of Cuts (n)</th>
+      <th>Maximum Regions</th>
+      <th>New Regions Added</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>7</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>11</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>16</td>
+      <td>5</td>
+    </tr>
+  </table>
+
+  <p>Notice something interesting? With each new cut (n), we add exactly n new regions to our total! This happens because each new line can cross all previous lines once, creating n new regions.</p>
+
+  <p>So, our pattern is:</p>
+  <ul>
+    <li>Start with 1 region</li>
+    <li>First cut: Add 1 new region (total: 2)</li>
+    <li>Second cut: Add 2 new regions (total: 4)</li>
+    <li>Third cut: Add 3 new regions (total: 7)</li>
+    <li>Fourth cut: Add 4 new regions (total: 11)</li>
+    <li>And so on...</li>
+  </ul>
+
+  <p>This sequence of numbers (1, 2, 4, 7, 11, 16, ...) has a special name in mathematics. It's called the "Lazy Caterer Sequence" or "Central Polygon Numbers." Mathematicians find these patterns fascinating because they show up in all sorts of unexpected places!</p>
+
+  <details>
+    <summary><strong>The Mathematical Formula (WARNING: NERDY STUFF HERE!)</strong></summary>
+    <div style="background-color: #e0f7fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+      <p>The formula for the maximum number of regions (R) with n straight line cuts is:</p>
+      
+      \[ R = \frac{n(n+1)}{2} + 1 \]
+      
+      <p><strong>Proof/Derivation:</strong></p>
+      <p>Let's see why this formula works:</p>
+      <ol>
+        <li>We start with 1 region (the circle itself) before any cuts.</li>
+        <li>Each new line can intersect with all previous lines, creating new regions.</li>
+        <li>The key insight: the \(n^{th}\) line can create at most \(n\) new regions (by intersecting with all \(n-1\) previous lines, plus creating one more region by cutting through the circle).</li>
+        <li>So the total number of regions is:</li>
+      </ol>
+      
+      \[ R = 1 \text{ (initial region)} + 1 \text{ (from first cut)} + 2 \text{ (from second cut)} + 3 \text{ (from third cut)} + \ldots + n \text{ (from } n^{th} \text{ cut)} \]
+      
+      \[ R = 1 + (1 + 2 + 3 + \ldots + n) \]
+      
+      <p>The sum \(1 + 2 + 3 + \ldots + n\) is a well-known arithmetic series that equals \(\frac{n(n+1)}{2}\).</p>
+      
+      \[ R = 1 + \frac{n(n+1)}{2} \]
+      
+      \[ R = \frac{n(n+1)}{2} + 1 \]
+      
+      <p>Let's verify with our examples:</p>
+      <ul>
+        <li>For \(n = 0\): \(R = \frac{0(0+1)}{2} + 1 = 0 + 1 = 1\) ✓</li>
+        <li>For \(n = 1\): \(R = \frac{1(1+1)}{2} + 1 = 1 + 1 = 2\) ✓</li>
+        <li>For \(n = 2\): \(R = \frac{2(2+1)}{2} + 1 = 3 + 1 = 4\) ✓</li>
+        <li>For \(n = 3\): \(R = \frac{3(3+1)}{2} + 1 = 6 + 1 = 7\) ✓</li>
+        <li>For \(n = 4\): \(R = \frac{4(4+1)}{2} + 1 = 10 + 1 = 11\) ✓</li>
+      </ul>
+      
+      <p>Want to explore more? Check out the <a href="https://archive.lib.msu.edu/crcmath/math/math/c/c309.htm" target="_blank">full mathematical explanation (SUPER NERDY STUFF!)</a></p>
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>The Extrapolation Method: An Easier Solution (Still a Bit Nerdy)</strong></summary>
+    <div style="background-color: #e8f5e9; padding: 15px; border-radius: 10px; margin: 15px 0;">
+      <p>There's actually an easier way to solve this problem without having to draw all the lines and count all the regions. Once we recognize the pattern, we can use <em>extrapolation</em> to predict the results!</p>
+      
+      <p>Let's examine our results so far and look for a pattern:</p>
+      
+      <table border="1" cellpadding="5" style="margin: 15px auto; text-align: center;">
+        <tr>
+          <th>Number of Cuts</th>
+          <th>Total Regions</th>
+          <th>New Regions Added</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>1</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>4</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>7</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>11</td>
+          <td>4</td>
+        </tr>
+      </table>
+      
+      <p>Do you see it? The number of new regions created with each cut equals exactly the cut number itself!</p>
+      
+      <h5>Introducing Recursion</h5>
+      
+      <p>This pattern is a perfect example of what computer scientists call a <strong>recursive relationship</strong>. Recursion is when something is defined in terms of itself. In our case, the number of regions after n cuts depends on the number of regions after n-1 cuts.</p>
+      
+      <p>We can express this relationship using a recursive formula:</p>
+      
+      \[ R(n) = R(n-1) + n \]
+      
+      <p>Where:</p>
+      <ul>
+        <li>\(R(n)\) = Total regions after n cuts</li>
+        <li>\(R(n-1)\) = Total regions after n-1 cuts</li>
+        <li>\(n\) = Current cut number</li>
+        <li>\(R(0) = 1\) (Our starting point with zero cuts)</li>
+      </ul>
+      
+      <p>In computer programming, we could implement this recursive solution like this:</p>
+      
+      <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; font-family: monospace;">
+        <pre>
+function calculateRegions(cuts) {
+    // Base case - stop the recursion
+    if (cuts == 0) {
+        return 1;
+    }
+    
+    // Recursive case - use the previous result
+    return calculateRegions(cuts - 1) + cuts;
+}
+        </pre>
+      </div>
+      
+      <p>Using this function, we can easily calculate:</p>
+      <ul>
+        <li>calculateRegions(5) = 16</li>
+        <li>calculateRegions(6) = 22</li>
+      </ul>
+      
+      <p>Recursion is a powerful concept in computer science that allows for elegant solutions to complex problems. It's especially useful when each step in a problem builds directly on the previous step, as in our circle cutting problem!</p>
+      
+      <p>The real-world advantage of this approach is that it allows us to make predictions without doing all the work of drawing and counting. This is similar to how computer programs can solve problems without brute force approaches.</p>
+      
+      <p>For the mathematically curious, our recursive formula can also be converted to the direct formula we saw earlier:</p>
+      
+      \[ R(n) = \frac{n(n+1)}{2} + 1 \]
+      
+      <p>Both formulas produce the same results, but the recursive approach often feels more intuitive for many people, while the direct formula is more efficient for calculating large values!</p>
+    </div>
+  </details>
+
+  <h4>Why This Matters</h4>
+
+  <p>You might be wondering, "What does cutting circles have to do with programming or computers?" Great question!</p>
+
+  <p>This problem illustrates several important concepts:</p>
+  
+  <ul>
+    <li><strong>Pattern recognition:</strong> Finding patterns is essential in programming and computer science</li>
+    <li><strong>Mathematical thinking:</strong> Converting observations into formulas is how we solve complex problems</li>
+    <li><strong>Numerical growth:</strong> Understanding how values grow as inputs increase helps us analyze program efficiency</li>
+    <li><strong>Testing hypotheses:</strong> We made predictions and tested them, just like debugging code</li>
+  </ul>
+
+  <p>Plus, it's just fun to think about problems in different ways! Computer science is as much about creativity and problem-solving as it is about writing code.</p>
+
+  <p>For your own exploration, try extending the pattern to 6 or 7 cuts. Can you predict how many regions you'll get without drawing it out? Use the formula to check your answer!</p>
+
+  <hr>
+
+  <p><a href="../index.html">Back to Home Page</a></p>
+
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Find all timestamp links
+    const timestampLinks = document.querySelectorAll('.timestamp-link');
+    const video = document.getElementById('lectureVideo');
+
+    // Add click event to each timestamp
+    timestampLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Parse the timestamp (format: [MM:SS-MM:SS] or [MM:SS])
+        const timestampText = this.textContent;
+
+        // Extract just the first timestamp before any hyphen
+        let timeMatch = timestampText.match(/\[(\d+):(\d+)/);
+
+        if (timeMatch && timeMatch.length >= 3) {
+          const minutes = parseInt(timeMatch[1]);
+          const seconds = parseInt(timeMatch[2]);
+          const totalSeconds = minutes * 60 + seconds;
+
+          // Set video to that timestamp and play
+          if (video && !isNaN(totalSeconds)) {
+            video.currentTime = totalSeconds;
+            video.play();
+
+            // Scroll to video if it's not in view
+            video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      });
+    });
+  });
+  </script>
 
 </body>
 </html>

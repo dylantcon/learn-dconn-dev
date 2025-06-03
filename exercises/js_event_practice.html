@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="./js/event_ex_script.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>JavaScript Events</title>
+
+  </head>
+
+  <body>
+
+    <h1>JavaScript Events</h1>
+    <hr>
+        <div class="example-section">
+          <p>The examples seen below are powered by two functions. The first is <code>attachEventHandler</code>, which configures an <code>event</code> listener for an element with an ID <code>elementId</code>. It then binds that element with a <code>handler</code> that specifies what behavior should result from said <code>event</code>:</p>
+          <pre>         
+function attachEventHandler(elementId, event, handler) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.addEventListener(event, handler);
+  } else {
+    console.error(`Element with ID "${elementId}" not found.`);
+  }
+}
+          </pre>
+
+        <p>There are event handler functions for each of the unique mouse events in JavaScript, which make calls to <code>updateDisplay</code>. When a call is made, the function changes the content of a visual area in the page, using the metadata associated with the triggering <code>event</code>:</p>
+        <pre>
+function updateDisplay(elementId, content {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.textContent = content;
+  } else {
+    console.error(`Display element "${elementId}" not found.`)
+  }
+}
+        </pre>
+
+      <p>All of the identifier strings for JavaScript's mouse events are listed below:</p>
+      <ol>
+        <li><code>click</code></li>
+        <li><code>dblclick</code></li>
+        <li><code>mouseover</code></li>
+        <li><code>mouseout</code></li>
+        <li><code>mouseenter</code></li>
+        <li><code>mouseleave</code></li>
+        <li><code>mousedown</code></li>
+        <li><code>mouseup</code></li>
+        <li><code>mousemove</code></li>
+        <li><code>contextmenu</code></li>
+        <li><code>mousewheel</code></li>
+        <li><code>DOMMouseScroll</code></li>
+      </ol>
+
+      </div>
+
+      <hr>
+
+    <div class="example-section">
+        <h2>Click Example (<code>click</code>)</h2>
+        <div id="clickDiv" class="event-target">
+            Click me
+        </div>
+        <span id="clickDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('clickDiv', 'click', handleClick);
+        </script>
+    </div>
+    
+    <div class="example-section">
+        <h2>Double Click Example (<code>dblclick</code>)</h2>
+        <div id="doubleClickDiv" class="event-target">
+            Double click me
+        </div>
+        <span id="doubleClickDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('doubleClickDiv', 'doubleClick', handleDoubleClick);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Mouse Over Example (<code>mouseover</code>)</h2>
+        <div id="mouseOverDiv" class="event-target">
+            Mouse over me
+        </div>
+        <span id="mouseOverDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('mouseOverDiv', 'mouseover', handleMouseOver);
+        </script>
+     </div>
+
+    <div class="example-section">
+        <h2>Mouse Out Example (<code>mouseout</code>)</h2>
+        <div id="mouseOutDiv" class="event-target">
+            Mouse out of me
+        </div>
+        <span id="mouseOutDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('mouseOutDiv', 'mouseout', handleMouseOut);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Mouse Enter Example (<code>mouseenter</code>)</h2>
+        <div id="mouseEnterDiv" class="event-target">
+            Mouse into me
+        </div>
+        <span id="mouseEnterDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('mouseEnterDiv', 'mouseenter', handleMouseEnter);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Mouse Leave Example (<code>mouseleave</code>)</h2>
+        <div id="mouseLeaveDiv" class="event-target">
+            Make the mouse leave me
+        </div>
+        <span id="mouseLeaveDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('mouseLeaveDiv', 'mouseleave', handleMouseLeave);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Mouse Down Example (<code>mousedown</code>)</h2>
+        <div id="mouseDownDiv" class="event-target">
+            Click mouse button down inside me
+        </div>
+        <span id="mouseDownDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('mouseDownDiv', 'mousedown', handleMouseDown);
+        </script>
+ 
+    <div class="example-section">
+        <h2>Mouse Up Example (<code>mouseup</code>)</h2>
+        <div id="mouseUpDiv" class="event-target">
+            Release clicked mouse button inside me
+        </div>
+        <span id="mouseUpDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('mouseUpDiv', 'mouseup', handleMouseUp);
+        </script>
+   </div>
+
+      <div class="example-section">
+        <h2>Mouse Movement Example (<code>mousemove</code>)</h2>
+        <div id="trackingDiv" class="event-target">
+          Move mouse here
+        </div>
+        <span id="mouseMoveDisplay" class="output-display">Mouse coordinates will appear here</span>
+        <script>
+          attachEventHandler('trackingDiv', 'mousemove', handleMouseMove);
+        </script>
+      </div>
+
+    <div class="example-section">
+        <h2>Context Menu Example (<code>contextmenu</code>)</h2>
+        <div id="contextMenuDiv" class="event-target">
+            Attempt to open a context menu inside me
+        </div>
+        <span id="Display" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('contextMenuDiv', 'contextmenu', handleContextMenu);
+        </script>
+    </div>
+    <div class="example-section">
+        <h2>Mouse Wheel Example (<code>mousewheel</code>)</h2>
+        <div id="mouseWheelDiv" class="event-target">
+            Scroll the mouse wheel inside me
+        </div>
+        <span id="mouseWheelDisplay" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('mouseWheelDiv', 'mousewheel', handleMouseWheel);
+        </script>
+    </div>
+
+   <!--
+    <div class="example-section">
+        <h2>Example (<code></code>)</h2>
+        <div id="Div" class="event-target">
+            Click me
+        </div>
+        <span id="Display" class="output-display">Click info will appear here</span>
+        <script>
+            attachEventHandler('Div', '', handle);
+        </script>
+    </div>
+    -->
+
+  </body>
+
+</html>

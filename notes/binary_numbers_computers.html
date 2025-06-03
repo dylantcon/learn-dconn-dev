@@ -1,0 +1,67 @@
+<!doctype HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+
+    <h1>Binary Numbers and Computers</h1>
+
+    <h2>Lecture 2</h2>
+
+    <p><strong>Keywords:</strong></p>
+
+    <p><strong>Required Materials:</strong></p>
+
+    <hr>
+
+    <a href="../index.html">Return to Home Page</a>
+
+    <hr>
+
+    <hr>
+
+    <a href="../index.html">Return to Home Page</a>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Find all timestamp links
+        const timestampLinks = document.querySelectorAll('.timestamp-link');
+        const video = document.getElementById('lectureVideo');
+
+        // Add click event to each timestamp
+        timestampLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Parse the timestamp (format: [MM:SS-MM:SS] or [MM:SS])
+            const timestampText = this.textContent;
+
+            // Extract just the first timestamp before any hyphen
+            let timeMatch = timestampText.match(/\[(\d+):(\d+)/);
+
+            if (timeMatch && timeMatch.length >= 3) {
+              const minutes = parseInt(timeMatch[1]);
+              const seconds = parseInt(timeMatch[2]);
+              const totalSeconds = minutes * 60 + seconds;
+
+              // Set video to that timestamp and play
+              if (video && !isNaN(totalSeconds)) {
+                video.currentTime = totalSeconds;
+                video.play();
+
+                // Scroll to video if it's not in view
+                video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }
+          });
+        });
+      });
+    </script>
+
+  </body>
+</html>
+

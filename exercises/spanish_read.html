@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish RSVP Pronunciation Trainer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: #4299e1;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .mode-toggle {
+            background: #48bb78;
+        }
+
+        .mode-toggle:hover {
+            background: #38a169;
+        }
+
+        .speech-toggle {
+            background: #ed8936;
+        }
+
+        .speech-toggle:hover {
+            background: #dd6b20;
+        }
+
+        .speech-toggle.listening {
+            background: #e53e3e;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .speed-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        .speed-slider {
+            width: 200px;
+            margin: 0 10px;
+        }
+
+        .text-area {
+            min-height: 200px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f7fafc;
+        }
+
+        /* RSVP Mode Styles */
+        .rsvp-display {
+            display: none;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            min-height: 120px;
+            align-items: center;
+            justify-content: center;
+            background: #edf2f7;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .rsvp-display.active {
+            display: flex;
+        }
+
+        .rsvp-word {
+            color: #2d3748;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            margin-bottom: 10px;
+        }
+
+        .rsvp-word.highlight {
+            color: #e53e3e;
+            transform: scale(1.1);
+        }
+
+        .rsvp-phonetic {
+            font-size: 1.2rem;
+            color: #718096;
+            font-style: italic;
+            font-family: 'Courier New', monospace;
+            margin-top: 5px;
+        }
+
+        /* Traditional Reading Mode */
+        .traditional-display {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .traditional-display.hidden {
+            display: none;
+        }
+
+        .word {
+            transition: all 0.3s ease;
+            padding: 2px 4px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .word.current {
+            background: #fed7d7;
+            color: #c53030;
+            font-weight: 600;
+        }
+
+        .word.recognized {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+
+        .status.listening {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .status.ready {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .text-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            resize: vertical;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .sample-texts {
+            margin: 20px 0;
+        }
+
+        .sample-button {
+            background: #805ad5;
+            margin: 5px;
+            font-size: 0.9rem;
+            padding: 8px 15px;
+        }
+
+        .sample-button:hover {
+            background: #6b46c1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spanish RSVP Pronunciation Trainer</h1>
+        
+        <div class="controls">
+            <button id="modeToggle" class="mode-toggle">Switch to RSVP Mode</button>
+            <button id="speechToggle" class="speech-toggle">Start Speech Recognition</button>
+            <button id="playPause">Play</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="speed-controls">
+            <label for="speedSlider">Speed: </label>
+            <input type="range" id="speedSlider" class="speed-slider" min="100" max="600" value="250" step="25">
+            <span id="speedDisplay">250 WPM</span>
+        </div>
+
+        <div class="sample-texts">
+            <strong>Sample Texts:</strong>
+            <button class="sample-button" onclick="loadSampleText('beginner')">Beginner</button>
+            <button class="sample-button" onclick="loadSampleText('intermediate')">Intermediate</button>
+            <button class="sample-button" onclick="loadSampleText('advanced')">Advanced</button>
+        </div>
+
+        <textarea id="textInput" class="text-input" placeholder="Paste your Spanish text here, or use one of the sample texts above...">El gato está en la mesa. La niña come una manzana roja. El perro corre en el parque. Los estudiantes leen libros interesantes.</textarea>
+
+        <div id="status" class="status ready">Ready to start - Click "Process Text" to begin</div>
+
+        <div class="text-area">
+            <!-- RSVP Display -->
+            <div id="rsvpDisplay" class="rsvp-display">
+                <div>
+                    <div id="rsvpWord" class="rsvp-word">Click Play to Start</div>
+                    <div id="rsvpPhonetic" class="rsvp-phonetic">[klɪk pleɪ tu stɑrt]</div>
+                </div>
+            </div>
+
+            <!-- Traditional Reading Display -->
+            <div id="traditionalDisplay" class="traditional-display"></div>
+        </div>
+
+        <div class="controls">
+            <button id="processText">Process Text</button>
+            <button id="previousWord">Previous</button>
+            <button id="nextWord">Next</button>
+        </div>
+    </div>
+
+    <script>
+        class SpanishRSVPTrainer {
+            constructor() {
+                this.words = [];
+                this.currentWordIndex = 0;
+                this.isPlaying = false;
+                this.isRSVPMode = false;
+                this.wpm = 250;
+                this.speechRecognition = null;
+                this.isListening = false;
+                this.recognizedWords = new Set();
+                this.autoAdvance = true;
+                this.lastAdvanceTime = 0;
+                
+                // Spanish phonetic mapping (simplified IPA)
+                this.phoneticMap = {
+                    'el': '[el]', 'la': '[la]', 'los': '[los]', 'las': '[las]',
+                    'gato': '[ˈga.to]', 'casa': '[ˈka.sa]', 'mesa': '[ˈme.sa]',
+                    'niña': '[ˈni.ɲa]', 'niño': '[ˈni.ɲo]', 'come': '[ˈko.me]',
+                    'una': '[ˈu.na]', 'manzana': '[man.ˈsa.na]', 'roja': '[ˈro.xa]',
+                    'perro': '[ˈpe.ro]', 'corre': '[ˈko.re]', 'en': '[en]',
+                    'parque': '[ˈpar.ke]', 'estudiantes': '[es.tu.ˈðjan.tes]',
+                    'leen': '[ˈle.en]', 'libros': '[ˈli.βros]', 'interesantes': '[in.te.re.ˈsan.tes]',
+                    'está': '[es.ˈta]', 'es': '[es]', 'grande': '[ˈɡran.de]',
+                    'bonita': '[bo.ˈni.ta]', 'mercado': '[mer.ˈka.ðo]', 'maría': '[ma.ˈri.a]',
+                    'compra': '[ˈkom.pra]', 'frutas': '[ˈfru.tas]', 'frescas': '[ˈfres.kas]',
+                    'verduras': '[ber.ˈðu.ras]', 'hermano': '[er.ˈma.no]', 'prefiere': '[pre.ˈfje.re]',
+                    'pescado': '[pes.ˈka.ðo]', 'día': '[ˈdi.a]', 'especialmente': '[es.pe.θjal.ˈmen.te]',
+                    'preparado': '[pre.pa.ˈra.ðo]', 'especias': '[es.ˈpe.θjas]', 'domingos': '[do.ˈmin.ɡos]',
+                    'familia': '[fa.ˈmi.lja]', 'reúne': '[re.ˈu.ne]', 'compartir': '[kom.par.ˈtir]',
+                    'comida': '[ko.ˈmi.ða]', 'tradicional': '[tra.ði.θjo.ˈnal]',
+                    'globalización': '[ɡlo.βa.li.sa.ˈθjon]', 'transformado': '[trans.for.ˈma.ðo]',
+                    'económicas': '[e.ko.ˈno.mi.kas]', 'interdependencias': '[in.ter.de.pen.ˈden.θjas]',
+                    'naciones': '[na.ˈθjo.nes]', 'oportunidades': '[o.por.tu.ni.ˈða.ðes]',
+                    'desafíos': '[de.sa.ˈfi.os]', 'desarrollo': '[de.sa.ˈro.ʎo]',
+                    'sostenible': '[sos.te.ˈni.βle]', 'y': '[i]', 'con': '[kon]',
+                    'para': '[ˈpa.ra]', 'del': '[del]', 'cuando': '[ˈkwan.do]',
+                    'toda': '[ˈto.ða]', 'se': '[se]', 'han': '[an]', 'ha': '[a]',
+                    'este': '[ˈes.te]', 'tanto': '[ˈtan.to]', 'como': '[ˈko.mo]'
+                };
+                
+                this.initializeElements();
+                this.initializeSpeechRecognition();
+                this.bindEvents();
+                this.processText();
+            }
+
+            initializeElements() {
+                this.elements = {
+                    modeToggle: document.getElementById('modeToggle'),
+                    speechToggle: document.getElementById('speechToggle'),
+                    playPause: document.getElementById('playPause'),
+                    resetBtn: document.getElementById('resetBtn'),
+                    speedSlider: document.getElementById('speedSlider'),
+                    speedDisplay: document.getElementById('speedDisplay'),
+                    textInput: document.getElementById('textInput'),
+                    status: document.getElementById('status'),
+                    rsvpDisplay: document.getElementById('rsvpDisplay'),
+                    rsvpWord: document.getElementById('rsvpWord'),
+                    rsvpPhonetic: document.getElementById('rsvpPhonetic'),
+                    traditionalDisplay: document.getElementById('traditionalDisplay'),
+                    processText: document.getElementById('processText'),
+                    previousWord: document.getElementById('previousWord'),
+                    nextWord: document.getElementById('nextWord')
+                };
+            }
+
+            initializeSpeechRecognition() {
+                if ('webkitSpeechRecognition' in window) {
+                    this.speechRecognition = new webkitSpeechRecognition();
+                    this.speechRecognition.continuous = true;
+                    this.speechRecognition.interimResults = true;
+                    this.speechRecognition.lang = 'es-ES';
+
+                    this.speechRecognition.onstart = () => {
+                        this.isListening = true;
+                        this.updateSpeechButton();
+                        this.updateStatus('Listening for Spanish pronunciation...', 'listening');
+                    };
+
+                    this.speechRecognition.onend = () => {
+                        this.isListening = false;
+                        this.updateSpeechButton();
+                        this.updateStatus('Speech recognition stopped', 'ready');
+                    };
+
+                    this.speechRecognition.onresult = (event) => {
+                        let transcript = '';
+                        for (let i = event.resultIndex; i < event.results.length; i++) {
+                            transcript += event.results[i][0].transcript;
+                        }
+                        this.processSpeechResult(transcript.toLowerCase().trim());
+                    };
+
+                    this.speechRecognition.onerror = (event) => {
+                        console.error('Speech recognition error:', event.error);
+                        this.updateStatus(`Speech recognition error: ${event.error}`, 'ready');
+                    };
+                } else {
+                    this.elements.speechToggle.disabled = true;
+                    this.elements.speechToggle.textContent = 'Speech Recognition Not Supported';
+                }
+            }
+
+            bindEvents() {
+                this.elements.modeToggle.addEventListener('click', () => this.toggleMode());
+                this.elements.speechToggle.addEventListener('click', () => this.toggleSpeechRecognition());
+                this.elements.playPause.addEventListener('click', () => this.togglePlayPause());
+                this.elements.resetBtn.addEventListener('click', () => this.reset());
+                this.elements.speedSlider.addEventListener('input', () => this.updateSpeed());
+                this.elements.processText.addEventListener('click', () => this.processText());
+                this.elements.previousWord.addEventListener('click', () => this.previousWord());
+                this.elements.nextWord.addEventListener('click', () => this.nextWord());
+
+                // Keyboard controls
+                document.addEventListener('keydown', (e) => {
+                    if (e.code === 'Space') {
+                        e.preventDefault();
+                        this.togglePlayPause();
+                    } else if (e.code === 'ArrowLeft') {
+                        this.previousWord();
+                    } else if (e.code === 'ArrowRight') {
+                        this.nextWord();
+                    }
+                });
+            }
+
+            processText() {
+                const text = this.elements.textInput.value.trim();
+                if (!text) return;
+
+                // Simple Spanish text processing
+                this.words = text
+                    .toLowerCase()
+                    .replace(/[¿¡]/g, '') // Remove inverted punctuation
+                    .replace(/[.,;:!?]/g, ' $& ') // Add spaces around punctuation
+                    .split(/\s+/)
+                    .filter(word => word.length > 0)
+                    .map(word => word.replace(/[.,;:!?]/g, '')); // Clean punctuation for recognition
+
+                this.currentWordIndex = 0;
+                this.recognizedWords.clear();
+                this.renderText();
+                this.updateStatus(`Loaded ${this.words.length} words. Ready to start!`, 'ready');
+            }
+
+            renderText() {
+                if (this.isRSVPMode) {
+                    this.renderRSVP();
+                } else {
+                    this.renderTraditional();
+                }
+            }
+
+            renderRSVP() {
+                if (this.words.length === 0) return;
+                const currentWord = this.words[this.currentWordIndex] || 'End';
+                this.elements.rsvpWord.textContent = currentWord;
+                
+                // Display phonetic pronunciation
+                const phonetic = this.getPhonetic(currentWord);
+                this.elements.rsvpPhonetic.textContent = phonetic;
+                
+                // Highlight if word was recognized
+                if (this.recognizedWords.has(currentWord)) {
+                    this.elements.rsvpWord.classList.add('highlight');
+                } else {
+                    this.elements.rsvpWord.classList.remove('highlight');
+                }
+            }
+
+            getPhonetic(word) {
+                // Return phonetic transcription if available, otherwise generate basic one
+                const cleanWord = word.toLowerCase().replace(/[.,;:!?]/g, '');
+                if (this.phoneticMap[cleanWord]) {
+                    return this.phoneticMap[cleanWord];
+                }
+                
+                // Basic Spanish phonetic rules for unknown words
+                return this.generateBasicPhonetic(cleanWord);
+            }
+
+            generateBasicPhonetic(word) {
+                let phonetic = word.toLowerCase()
+                    .replace(/ch/g, 'tʃ')
+                    .replace(/ñ/g, 'ɲ')
+                    .replace(/ll/g, 'ʎ')
+                    .replace(/rr/g, 'r')
+                    .replace(/c([ei])/g, 'θ$1')
+                    .replace(/z/g, 'θ')
+                    .replace(/j/g, 'x')
+                    .replace(/g([ei])/g, 'x$1')
+                    .replace(/qu([ei])/g, 'k$1')
+                    .replace(/v/g, 'β')
+                    .replace(/b/g, 'β');
+                
+                return `[${phonetic}]`;
+            }
+
+            renderTraditional() {
+                const html = this.words.map((word, index) => {
+                    let classes = 'word';
+                    if (index === this.currentWordIndex) classes += ' current';
+                    if (this.recognizedWords.has(word)) classes += ' recognized';
+                    
+                    return `<span class="${classes}" onclick="trainer.jumpToWord(${index})">${word}</span>`;
+                }).join(' ');
+                
+                this.elements.traditionalDisplay.innerHTML = html;
+            }
+
+            toggleMode() {
+                this.isRSVPMode = !this.isRSVPMode;
+                
+                if (this.isRSVPMode) {
+                    this.elements.modeToggle.textContent = 'Switch to Traditional Mode';
+                    this.elements.rsvpDisplay.classList.add('active');
+                    this.elements.traditionalDisplay.classList.add('hidden');
+                } else {
+                    this.elements.modeToggle.textContent = 'Switch to RSVP Mode';
+                    this.elements.rsvpDisplay.classList.remove('active');
+                    this.elements.traditionalDisplay.classList.remove('hidden');
+                }
+                
+                this.renderText();
+            }
+
+            toggleSpeechRecognition() {
+                if (!this.speechRecognition) return;
+
+                if (this.isListening) {
+                    this.speechRecognition.stop();
+                } else {
+                    this.speechRecognition.start();
+                }
+            }
+
+            updateSpeechButton() {
+                if (this.isListening) {
+                    this.elements.speechToggle.textContent = 'Stop Listening';
+                    this.elements.speechToggle.classList.add('listening');
+                } else {
+                    this.elements.speechToggle.textContent = 'Start Speech Recognition';
+                    this.elements.speechToggle.classList.remove('listening');
+                }
+            }
+
+            processSpeechResult(transcript) {
+                const spokenWords = transcript.split(/\s+/);
+                let shouldAdvance = false;
+                
+                spokenWords.forEach(spokenWord => {
+                    // Find matching words (fuzzy matching for pronunciation variations)
+                    this.words.forEach((word, index) => {
+                        if (this.wordsMatch(spokenWord, word)) {
+                            this.recognizedWords.add(word);
+                            
+                            // Auto-advance logic: advance if current word or next 1-2 words are spoken
+                            if (this.autoAdvance && this.isRSVPMode) {
+                                const currentIndex = this.currentWordIndex;
+                                const wordDistance = Math.abs(index - currentIndex);
+                                
+                                // Advance if we're speaking the current word or 1-2 words ahead
+                                if (wordDistance <= 2 && index >= currentIndex) {
+                                    const now = Date.now();
+                                    // Prevent rapid advancing (minimum 500ms between advances)
+                                    if (now - this.lastAdvanceTime > 500) {
+                                        shouldAdvance = true;
+                                        this.lastAdvanceTime = now;
+                                    }
+                                }
+                            }
+                        }
+                    });
+                });
+
+                // Auto-advance to next word if conditions met
+                if (shouldAdvance && this.currentWordIndex < this.words.length - 1) {
+                    this.currentWordIndex++;
+                    this.updateStatus(`Advanced to: "${this.words[this.currentWordIndex]}"`, 'listening');
+                }
+
+                this.renderText();
+                this.updateStatus(`Recognized: "${transcript}"`, 'listening');
+            }
+
+            wordsMatch(spoken, target) {
+                // Simple fuzzy matching for Spanish pronunciation
+                const normalize = (str) => str.toLowerCase()
+                    .replace(/[áàäâ]/g, 'a')
+                    .replace(/[éèëê]/g, 'e')
+                    .replace(/[íìïî]/g, 'i')
+                    .replace(/[óòöô]/g, 'o')
+                    .replace(/[úùüû]/g, 'u')
+                    .replace(/ñ/g, 'n');
+
+                const normalizedSpoken = normalize(spoken);
+                const normalizedTarget = normalize(target);
+
+                // Exact match or contains
+                return normalizedSpoken === normalizedTarget || 
+                       normalizedSpoken.includes(normalizedTarget) ||
+                       normalizedTarget.includes(normalizedSpoken);
+            }
+
+            togglePlayPause() {
+                if (this.words.length === 0) {
+                    this.processText();
+                    return;
+                }
+
+                this.isPlaying = !this.isPlaying;
+                
+                if (this.isPlaying) {
+                    this.elements.playPause.textContent = 'Pause';
+                    this.startRSVP();
+                } else {
+                    this.elements.playPause.textContent = 'Play';
+                    this.stopRSVP();
+                }
+            }
+
+            startRSVP() {
+                if (!this.isPlaying) return;
+
+                const interval = 60000 / this.wpm; // milliseconds per word
+                
+                this.rsvpTimer = setInterval(() => {
+                    if (this.currentWordIndex >= this.words.length) {
+                        this.stopRSVP();
+                        this.updateStatus('Finished reading! Great job!', 'ready');
+                        return;
+                    }
+
+                    this.renderText();
+                    this.currentWordIndex++;
+                }, interval);
+            }
+
+            stopRSVP() {
+                this.isPlaying = false;
+                this.elements.playPause.textContent = 'Play';
+                if (this.rsvpTimer) {
+                    clearInterval(this.rsvpTimer);
+                    this.rsvpTimer = null;
+                }
+            }
+
+            reset() {
+                this.stopRSVP();
+                this.currentWordIndex = 0;
+                this.recognizedWords.clear();
+                this.renderText();
+                this.updateStatus('Reset complete. Ready to start!', 'ready');
+            }
+
+            updateSpeed() {
+                this.wpm = parseInt(this.elements.speedSlider.value);
+                this.elements.speedDisplay.textContent = `${this.wpm} WPM`;
+                
+                // Restart RSVP with new speed if playing
+                if (this.isPlaying) {
+                    this.stopRSVP();
+                    this.startRSVP();
+                }
+            }
+
+            previousWord() {
+                if (this.currentWordIndex > 0) {
+                    this.currentWordIndex--;
+                    this.renderText();
+                }
+            }
+
+            nextWord() {
+                if (this.currentWordIndex < this.words.length) {
+                    this.currentWordIndex++;
+                    this.renderText();
+                }
+            }
+
+            jumpToWord(index) {
+                this.currentWordIndex = index;
+                this.renderText();
+            }
+
+            updateStatus(message, type) {
+                this.elements.status.textContent = message;
+                this.elements.status.className = `status ${type}`;
+            }
+        }
+
+        // Sample texts for different levels
+        const sampleTexts = {
+            beginner: "El gato está en la mesa. La niña come una manzana roja. El perro corre en el parque. Los estudiantes leen libros interesantes. La casa es grande y bonita.",
+            
+            intermediate: "En el mercado, María compra frutas frescas y verduras orgánicas. Su hermano prefiere el pescado del día, especialmente cuando está preparado con especias mediterráneas. Los domingos, toda la familia se reúne para compartir una comida tradicional.",
+            
+            advanced: "La globalización ha transformado radicalmente las estructuras económicas contemporáneas, creando interdependencias complejas entre naciones que anteriormente mantenían relaciones comerciales limitadas. Este fenómeno presenta tanto oportunidades extraordinarias como desafíos significativos para el desarrollo sostenible."
+        };
+
+        function loadSampleText(level) {
+            document.getElementById('textInput').value = sampleTexts[level];
+            trainer.processText();
+        }
+
+        // Initialize the trainer
+        let trainer;
+        window.addEventListener('DOMContentLoaded', () => {
+            trainer = new SpanishRSVPTrainer();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoderOgres Slide Generator</title>
+    <!-- Try multiple CDN sources -->
+    <script src="https://unpkg.com/pptxgenjs@3.12.0/dist/pptxgen.bundle.js" 
+            onerror="loadBackupCDN()"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c5530 0%, #1a3a3e 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ff9500;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .slide-input {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ff9500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #ff9500, #ff7300);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 149, 0, 0.3);
+        }
+        
+        .slide-preview {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #ff9500;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .slide-counter {
+            background: rgba(255, 149, 0, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .preset-slides {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .preset-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .preset-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CoderOgres Slide Generator</h1>
+        
+        <div class="slide-counter">
+            <strong>Slides Created: <span id="slideCount">0</span></strong>
+            <br>
+            <span id="libraryStatus">Loading Library...</span>
+        </div>
+        
+        <div class="slide-input">
+            <label for="slideTitle">Slide Title:</label>
+            <input type="text" id="slideTitle" placeholder="Enter slide title...">
+        </div>
+        
+        <div class="slide-input">
+            <label for="slideContent">Slide Content:</label>
+            <textarea id="slideContent" placeholder="Enter slide content... (Use ** for bold, * for bullets)"></textarea>
+        </div>
+        
+        <div class="slide-input">
+            <label for="visualSuggestion">Visual Suggestion:</label>
+            <textarea id="visualSuggestion" placeholder="Describe visual elements for this slide..."></textarea>
+        </div>
+        
+        <div class="slide-input">
+            <label for="bulkInput">Bulk Import (Markdown Format):</label>
+            <textarea id="bulkInput" placeholder="Paste multiple slides using this format:
+
+# Slide Title Here
+Content with **bold** and *bullets*
+• Point 1
+• Point 2
+Visual: Description of visual elements
+Template: content
+
+---
+
+# Second Slide Title
+More content here
+```javascript
+// Code blocks supported
+function example() {
+    return 'hello';
+}
+```
+Visual: Another visual description
+Template: code
+
+---
+
+(Use --- to separate slides)" style="height: 200px;"></textarea>
+            <button onclick="parseBulkInput()">Import Slides</button>
+        </div>
+
+        <div class="slide-input">
+            <label for="slideTemplate">Template:</label>
+            <select id="slideTemplate">
+                <option value="title">Title Slide</option>
+                <option value="content">Content Slide</option>
+                <option value="code">Code Example</option>
+                <option value="activity">Activity/Exercise</option>
+                <option value="comparison">Before/After Comparison</option>
+                <option value="retro-computer">Retro Computer Demo</option>
+                <option value="phone-analogy">Phone Analogy</option>
+                <option value="security-camera">Security Camera Concept</option>
+                <option value="workshop">Workshop/Building</option>
+            </select>
+            <button onclick="showTemplateManager()">⚙️ Manage Templates</button>
+        </div>
+
+        <!-- Template Manager Modal -->
+        <div id="templateManager" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 10px; color: #333; max-width: 600px; max-height: 80%; overflow-y: auto;">
+                <h2>Template Manager</h2>
+                <div>
+                    <label>Template Name:</label>
+                    <input type="text" id="newTemplateName" placeholder="e.g., My Custom Template">
+                </div>
+                <div>
+                    <label>Background Color:</label>
+                    <input type="color" id="templateBgColor" value="#2c5530">
+                </div>
+                <div>
+                    <label>Title Color:</label>
+                    <input type="color" id="templateTitleColor" value="#ff9500">
+                </div>
+                <div>
+                    <label>Text Color:</label>
+                    <input type="color" id="templateTextColor" value="#ffffff">
+                </div>
+                <div>
+                    <label>Layout Style:</label>
+                    <select id="templateLayout">
+                        <option value="standard">Standard (Title + Content)</option>
+                        <option value="two-column">Two Column</option>
+                        <option value="center-focus">Center Focus</option>
+                        <option value="code-demo">Code Demonstration</option>
+                    </select>
+                </div>
+                <button onclick="saveCustomTemplate()">Save Template</button>
+                <button onclick="closeTemplateManager()">Close</button>
+                
+                <h3>Existing Custom Templates:</h3>
+                <div id="customTemplatesList"></div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button onclick="addSlide()">Add Slide</button>
+            <button onclick="generatePresetSlides()">Load Sample Slides</button>
+            <button onclick="generatePowerPoint()">Generate PowerPoint</button>
+            <button onclick="clearSlides()">Clear All</button>
+        </div>
+        
+        <div id="slidePreview"></div>
+        
+        <div class="preset-slides">
+            <div class="preset-card" onclick="loadEventSlides()">
+                <h3>JavaScript Events</h3>
+                <p>Load sample slides from JS Events lecture</p>
+            </div>
+            <div class="preset-card" onclick="loadDOMSlides()">
+                <h3>DOM Manipulation</h3>
+                <p>Load sample slides from DOM lecture</p>
+            </div>
+            <div class="preset-card" onclick="loadHostingSlides()">
+                <h3>Web Hosting</h3>
+                <p>Load sample slides from hosting lecture</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let slides = [];
+        let slideCounter = 0;
+        let pptxLibraryLoaded = false;
+        let customTemplates = JSON.parse(localStorage.getItem('customTemplates') || '[]');
+
+        // Backup CDN loading function
+        function loadBackupCDN() {
+            console.log('Primary CDN failed, trying backup...');
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js';
+            script.onerror = function() {
+                console.log('Backup CDN failed, trying third option...');
+                const script2 = document.createElement('script');
+                script2.src = 'https://cdnjs.cloudflare.com/ajax/libs/PptxGenJS/3.11.0/pptxgen.bundle.min.js';
+                script2.onerror = function() {
+                    alert('Unable to load PptxGenJS library. Please check your internet connection or download the library locally.');
+                };
+                script2.onload = function() {
+                    pptxLibraryLoaded = true;
+                    console.log('PptxGenJS loaded from third CDN successfully!');
+                };
+                document.head.appendChild(script2);
+            };
+            script.onload = function() {
+                pptxLibraryLoaded = true;
+                console.log('PptxGenJS loaded from backup CDN successfully!');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Check if library loaded on window load
+        window.onload = function() {
+            setTimeout(function() {
+                if (typeof PptxGenJS !== 'undefined') {
+                    pptxLibraryLoaded = true;
+                    console.log('PptxGenJS loaded successfully!');
+                    document.getElementById('libraryStatus').textContent = 'Library Loaded';
+                    document.getElementById('libraryStatus').style.color = '#00ff00';
+                } else {
+                    document.getElementById('libraryStatus').textContent = 'Library Failed to Load';
+                    document.getElementById('libraryStatus').style.color = '#ff0000';
+                }
+                loadCustomTemplatesIntoDropdown();
+            }, 1000);
+        };
+
+        function parseBulkInput() {
+            const bulkText = document.getElementById('bulkInput').value.trim();
+            if (!bulkText) {
+                alert('Please enter some content in the bulk input area');
+                return;
+            }
+
+            // Split by slide delimiter
+            const slideTexts = bulkText.split('---').map(s => s.trim()).filter(s => s);
+            let importedCount = 0;
+
+            slideTexts.forEach(slideText => {
+                const slide = parseSlideMarkdown(slideText);
+                if (slide) {
+                    slides.push(slide);
+                    importedCount++;
+                }
+            });
+
+            if (importedCount > 0) {
+                document.getElementById('bulkInput').value = '';
+                updatePreview();
+                updateSlideCounter();
+                alert(`Successfully imported ${importedCount} slides!`);
+            } else {
+                alert('No valid slides found. Please check your format.');
+            }
+        }
+
+        function parseSlideMarkdown(text) {
+            const lines = text.split('\n').map(l => l.trim()).filter(l => l);
+            if (lines.length === 0) return null;
+
+            let title = '';
+            let content = [];
+            let visual = '';
+            let template = 'content';
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                
+                // Title (starts with #)
+                if (line.startsWith('#')) {
+                    title = line.replace(/^#+\s*/, '');
+                }
+                // Visual suggestion
+                else if (line.toLowerCase().startsWith('visual:')) {
+                    visual = line.replace(/^visual:\s*/i, '');
+                }
+                // Template
+                else if (line.toLowerCase().startsWith('template:')) {
+                    template = line.replace(/^template:\s*/i, '');
+                }
+                // Code blocks
+                else if (line.startsWith('```')) {
+                    const codeBlock = [line];
+                    i++; // Move to next line
+                    while (i < lines.length && !lines[i].startsWith('```')) {
+                        codeBlock.push(lines[i]);
+                        i++;
+                    }
+                    if (i < lines.length) codeBlock.push(lines[i]); // Closing ```
+                    content.push(codeBlock.join('\n'));
+                    template = 'code'; // Auto-detect code template
+                }
+                // Regular content
+                else if (line && !line.toLowerCase().startsWith('visual:') && !line.toLowerCase().startsWith('template:')) {
+                    content.push(line);
+                }
+            }
+
+            if (!title) {
+                console.warn('Slide missing title, skipping');
+                return null;
+            }
+
+            return {
+                title: title,
+                content: content.join('\n'),
+                visual: visual,
+                template: template
+            };
+        }
+
+        function showTemplateManager() {
+            document.getElementById('templateManager').style.display = 'block';
+            updateCustomTemplatesList();
+        }
+
+        function closeTemplateManager() {
+            document.getElementById('templateManager').style.display = 'none';
+        }
+
+        function saveCustomTemplate() {
+            const name = document.getElementById('newTemplateName').value.trim();
+            const bgColor = document.getElementById('templateBgColor').value;
+            const titleColor = document.getElementById('templateTitleColor').value;
+            const textColor = document.getElementById('templateTextColor').value;
+            const layout = document.getElementById('templateLayout').value;
+
+            if (!name) {
+                alert('Please enter a template name');
+                return;
+            }
+
+            const template = {
+                id: 'custom_' + Date.now(),
+                name: name,
+                bgColor: bgColor,
+                titleColor: titleColor,
+                textColor: textColor,
+                layout: layout
+            };
+
+            customTemplates.push(template);
+            localStorage.setItem('customTemplates', JSON.stringify(customTemplates));
+            loadCustomTemplatesIntoDropdown();
+            updateCustomTemplatesList();
+
+            // Clear form
+            document.getElementById('newTemplateName').value = '';
+            alert('Template saved successfully!');
+        }
+
+        function loadCustomTemplatesIntoDropdown() {
+            const select = document.getElementById('slideTemplate');
+            
+            // Remove existing custom options
+            const options = select.querySelectorAll('option');
+            options.forEach(option => {
+                if (option.value.startsWith('custom_')) {
+                    option.remove();
+                }
+            });
+
+            // Add custom templates
+            customTemplates.forEach(template => {
+                const option = document.createElement('option');
+                option.value = template.id;
+                option.textContent = `${template.name}`;
+                select.appendChild(option);
+            });
+        }
+
+        function updateCustomTemplatesList() {
+            const list = document.getElementById('customTemplatesList');
+            list.innerHTML = customTemplates.map(template => `
+                <div style="border: 1px solid #ccc; padding: 10px; margin: 5px 0; border-radius: 5px;">
+                    <strong>${template.name}</strong><br>
+                    <span style="background: ${template.bgColor}; color: ${template.titleColor}; padding: 2px 6px; border-radius: 3px;">Title Sample</span>
+                    <span style="background: ${template.bgColor}; color: ${template.textColor}; padding: 2px 6px; border-radius: 3px;">Text Sample</span><br>
+                    Layout: ${template.layout}<br>
+                    <button onclick="deleteCustomTemplate('${template.id}')" style="background: #dc3545; color: white; border: none; padding: 3px 8px; border-radius: 3px; font-size: 12px;">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function deleteCustomTemplate(id) {
+            if (confirm('Are you sure you want you want to delete this template?')) {
+                customTemplates = customTemplates.filter(t => t.id !== id);
+                localStorage.setItem('customTemplates', JSON.stringify(customTemplates));
+                loadCustomTemplatesIntoDropdown();
+                updateCustomTemplatesList();
+            }
+        }
+
+        function processMarkdownText(text) {
+            if (!text) return '';
+            
+            // Handle rich text formatting for PptxGenJS
+            const segments = [];
+            let currentIndex = 0;
+            
+            // Find all bold text markers
+            const boldRegex = /\*\*(.*?)\*\*/g;
+            let match;
+            
+            while ((match = boldRegex.exec(text)) !== null) {
+                // Add text before bold
+                if (match.index > currentIndex) {
+                    segments.push({
+                        text: text.slice(currentIndex, match.index),
+                        options: {}
+                    });
+                }
+                
+                // Add bold text
+                segments.push({
+                    text: match[1],
+                    options: { bold: true }
+                });
+                
+                currentIndex = match.index + match[0].length;
+            }
+            
+            // Add remaining text
+            if (currentIndex < text.length) {
+                segments.push({
+                    text: text.slice(currentIndex),
+                    options: {}
+                });
+            }
+            
+            // If no bold text found, return simple string
+            if (segments.length === 0) {
+                return text.replace(/^• /gm, '• ');
+            }
+            
+            // Return rich text array for PptxGenJS
+            return segments.map(segment => ({
+                text: segment.text.replace(/^• /gm, '• '),
+                options: segment.options
+            }));
+        }
+
+        function updateSlideCounter() {
+            document.getElementById('slideCount').textContent = slides.length;
+        }
+
+        function addSlide() {
+            const title = document.getElementById('slideTitle').value;
+            const content = document.getElementById('slideContent').value;
+            const visual = document.getElementById('visualSuggestion').value;
+            const template = document.getElementById('slideTemplate').value;
+            
+            if (!title || !content) {
+                alert('Please enter both title and content');
+                return;
+            }
+            
+            slides.push({
+                title: title,
+                content: content,
+                visual: visual,
+                template: template
+            });
+            
+            // Clear inputs
+            document.getElementById('slideTitle').value = '';
+            document.getElementById('slideContent').value = '';
+            document.getElementById('visualSuggestion').value = '';
+            
+            updatePreview();
+            updateSlideCounter();
+        }
+
+        function updatePreview() {
+            const preview = document.getElementById('slidePreview');
+            preview.innerHTML = slides.map((slide, index) => `
+                <div class="slide-preview">
+                    <h3>${index + 1}. ${slide.title}</h3>
+                    <p><strong>Content:</strong> ${slide.content.substring(0, 100)}...</p>
+                    <p><strong>Template:</strong> ${slide.template}</p>
+                    <button onclick="removeSlide(${index})" style="background: #dc3545; padding: 5px 10px; font-size: 14px;">Remove</button>
+                </div>
+            `).join('');
+        }
+
+        function removeSlide(index) {
+            slides.splice(index, 1);
+            updatePreview();
+            updateSlideCounter();
+        }
+
+        function clearSlides() {
+            slides = [];
+            updatePreview();
+            updateSlideCounter();
+        }
+
+        function generatePowerPoint() {
+            if (typeof PptxGenJS === 'undefined') {
+                alert('PptxGenJS library is not loaded. Please check your internet connection and refresh the page.');
+                return;
+            }
+
+            if (slides.length === 0) {
+                alert('Please add some slides first');
+                return;
+            }
+
+            const pptx = new PptxGenJS();
+            
+            // Set presentation properties
+            pptx.author = 'CoderOgres';
+            pptx.company = 'CoderOgres Education';
+            pptx.title = 'Web Development Curriculum';
+            
+            slides.forEach((slideData, index) => {
+                const slide = pptx.addSlide();
+                
+                // Check if it's a custom template
+                const isCustomTemplate = slideData.template.startsWith('custom_');
+                let templateConfig = {
+                    bgColor: '103C3F',  // Updated default background color
+                    titleColor: 'ff9500',
+                    textColor: 'ffffff'
+                };
+
+                if (isCustomTemplate) {
+                    const customTemplate = customTemplates.find(t => t.id === slideData.template);
+                    if (customTemplate) {
+                        templateConfig = {
+                            bgColor: customTemplate.bgColor.replace('#', ''),
+                            titleColor: customTemplate.titleColor.replace('#', ''),
+                            textColor: customTemplate.textColor.replace('#', '')
+                        };
+                    }
+                }
+
+                // Set background color
+                slide.background = { color: templateConfig.bgColor };
+                
+                switch(slideData.template) {
+                    case 'title':
+                        // Title slide layout
+                        slide.addText(slideData.title, {
+                            x: 1, y: 2, w: 8, h: 2,
+                            fontSize: 44, bold: true, color: templateConfig.titleColor,
+                            align: 'center'
+                        });
+                        
+                        if (slideData.content) {
+                            const processedText = processMarkdownText(slideData.content);
+                            slide.addText(processedText, {
+                                x: 1, y: 4.5, w: 8, h: 1.5,
+                                fontSize: 24, color: templateConfig.textColor,
+                                align: 'center', italic: true
+                            });
+                        }
+                        break;
+                        
+                    case 'code':
+                        // Code example layout
+                        slide.addText(slideData.title, {
+                            x: 0.5, y: 0.5, w: 9, h: 1,
+                            fontSize: 32, bold: true, color: templateConfig.titleColor
+                        });
+                        
+                        // Extract code blocks
+                        const codeMatch = slideData.content.match(/```[\s\S]*?```/g);
+                        if (codeMatch) {
+                            // Create rounded rectangle with text inside
+                            slide.addText(codeMatch[0].replace(/```(\w+)?\n?/g, '').replace(/```$/g, ''), {
+                                x: 0.5, y: 1.8, w: 9, h: 4,
+                                fontSize: 14, fontFace: 'Courier New',
+                                color: '000000',
+                                fill: { color: 'f8f8f8' },
+                                line: { color: 'cccccc', width: 2 },
+                                shape: pptx.ShapeType.roundRect,
+                                rectRadius: 0.15
+                            });
+                        }
+                        
+                        // Add explanation text
+                        const explanation = slideData.content.replace(/```[\s\S]*?```/g, '').trim();
+                        if (explanation) {
+                            const processedText = processMarkdownText(explanation);
+                            slide.addText(processedText, {
+                                x: 0.5, y: 6, w: 9, h: 1.5,
+                                fontSize: 18, color: templateConfig.textColor
+                            });
+                        }
+                        break;
+                        
+                    case 'activity':
+                        // Activity layout
+                        slide.addText(slideData.title, {
+                            x: 0.5, y: 0.5, w: 9, h: 1,
+                            fontSize: 32, bold: true, color: templateConfig.titleColor
+                        });
+                        
+                        slide.addText('🎯 ACTIVITY', {
+                            x: 0.5, y: 1.5, w: 3, h: 0.8,
+                            fontSize: 20, bold: true, color: 'ffff00',
+                            fill: { color: templateConfig.titleColor }, align: 'center'
+                        });
+                        
+                        const processedText = processMarkdownText(slideData.content);
+                        slide.addText(processedText, {
+                            x: 0.5, y: 2.5, w: 9, h: 4.5,
+                            fontSize: 18, color: templateConfig.textColor
+                        });
+                        break;
+
+                    case 'retro-computer':
+                        // Retro computer template
+                        slide.addText(slideData.title, {
+                            x: 0.5, y: 0.5, w: 9, h: 1,
+                            fontSize: 28, bold: true, color: templateConfig.titleColor
+                        });
+                        
+                        // Computer screen mockup
+                        slide.addShape(pptx.ShapeType.rect, {
+                            x: 6, y: 1.8, w: 3.5, h: 2.5,
+                            fill: { color: '000000' },
+                            line: { color: 'cccccc', width: 2 }
+                        });
+                        
+                        slide.addText(slideData.content, {
+                            x: 0.5, y: 1.8, w: 5, h: 5,
+                            fontSize: 16, color: templateConfig.textColor
+                        });
+                        break;
+
+                    case 'phone-analogy':
+                        // Phone analogy template
+                        slide.addText(slideData.title, {
+                            x: 0.5, y: 0.5, w: 9, h: 1,
+                            fontSize: 28, bold: true, color: templateConfig.titleColor
+                        });
+                        
+                        // Phone icons (mockup with shapes)
+                        for (let i = 0; i < 3; i++) {
+                            slide.addShape(pptx.ShapeType.rect, {
+                                x: 1 + (i * 2.5), y: 2, w: 1.5, h: 2.5,
+                                fill: { color: '333333' },
+                                line: { color: templateConfig.titleColor, width: 2 }
+                            });
+                        }
+                        
+                        slide.addText(slideData.content, {
+                            x: 0.5, y: 5, w: 9, h: 2.5,
+                            fontSize: 16, color: templateConfig.textColor
+                        });
+                        break;
+
+                    case 'comparison':
+                        // Before/After comparison
+                        slide.addText(slideData.title, {
+                            x: 0.5, y: 0.5, w: 9, h: 1,
+                            fontSize: 28, bold: true, color: templateConfig.titleColor
+                        });
+                        
+                        slide.addText('BEFORE', {
+                            x: 0.5, y: 1.8, w: 4, h: 0.5,
+                            fontSize: 18, bold: true, color: 'ff6b6b',
+                            align: 'center'
+                        });
+                        
+                        slide.addText('AFTER', {
+                            x: 5.5, y: 1.8, w: 4, h: 0.5,
+                            fontSize: 18, bold: true, color: '51cf66',
+                            align: 'center'
+                        });
+                        
+                        const parts = slideData.content.split('→');
+                        if (parts.length >= 2) {
+                            slide.addText(parts[0].trim(), {
+                                x: 0.5, y: 2.5, w: 4, h: 4,
+                                fontSize: 14, color: templateConfig.textColor
+                            });
+                            
+                            slide.addText(parts[1].trim(), {
+                                x: 5.5, y: 2.5, w: 4, h: 4,
+                                fontSize: 14, color: templateConfig.textColor
+                            });
+                        } else {
+                            slide.addText(slideData.content, {
+                                x: 0.5, y: 2.5, w: 9, h: 4,
+                                fontSize: 16, color: templateConfig.textColor
+                            });
+                        }
+                        break;
+                        
+                    default:
+                        // Check if it's a custom template
+                        if (isCustomTemplate) {
+                            const customTemplate = customTemplates.find(t => t.id === slideData.template);
+                            if (customTemplate) {
+                                applyCustomTemplate(slide, slideData, customTemplate);
+                            }
+                        } else {
+                            // Standard content layout
+                            slide.addText(slideData.title, {
+                                x: 0.5, y: 0.5, w: 9, h: 1,
+                                fontSize: 32, bold: true, color: templateConfig.titleColor
+                            });
+                            
+                            const processedText = processMarkdownText(slideData.content);
+                            slide.addText(processedText, {
+                                x: 0.5, y: 1.8, w: 9, h: 5.5,
+                                fontSize: 18, color: templateConfig.textColor
+                            });
+                        }
+                }
+                
+                // Add visual suggestion as speaker notes
+                if (slideData.visual && slideData.visual.trim()) {
+                    try {
+                        slide.addNotes(`Visual Suggestion: ${slideData.visual}`);
+                    } catch (error) {
+                        console.warn('Could not add notes to slide:', error);
+                    }
+                }
+                
+                // Removed page numbers per user request
+            });
+            
+            // Generate and download
+            pptx.writeFile({ fileName: 'CoderOgres_Slides.pptx' });
+        }
+
+        function applyCustomTemplate(slide, slideData, template) {
+            const colors = {
+                bg: template.bgColor.replace('#', ''),
+                title: template.titleColor.replace('#', ''),
+                text: template.textColor.replace('#', '')
+            };
+
+            switch (template.layout) {
+                case 'two-column':
+                    slide.addText(slideData.title, {
+                        x: 0.5, y: 0.5, w: 9, h: 1,
+                        fontSize: 28, bold: true, color: colors.title
+                    });
+                    
+                    const content = slideData.content.split('\n');
+                    const midpoint = Math.ceil(content.length / 2);
+                    
+                    slide.addText(content.slice(0, midpoint).join('\n'), {
+                        x: 0.5, y: 1.8, w: 4, h: 5.5,
+                        fontSize: 16, color: colors.text
+                    });
+                    
+                    slide.addText(content.slice(midpoint).join('\n'), {
+                        x: 5.5, y: 1.8, w: 4, h: 5.5,
+                        fontSize: 16, color: colors.text
+                    });
+                    break;
+                    
+                case 'center-focus':
+                    slide.addText(slideData.title, {
+                        x: 1.5, y: 2, w: 7, h: 1.5,
+                        fontSize: 36, bold: true, color: colors.title,
+                        align: 'center'
+                    });
+                    
+                    slide.addText(slideData.content, {
+                        x: 1.5, y: 4, w: 7, h: 3,
+                        fontSize: 20, color: colors.text,
+                        align: 'center'
+                    });
+                    break;
+                    
+                default:
+                    // Standard layout with custom colors
+                    slide.addText(slideData.title, {
+                        x: 0.5, y: 0.5, w: 9, h: 1,
+                        fontSize: 32, bold: true, color: colors.title
+                    });
+                    
+                    slide.addText(slideData.content, {
+                        x: 0.5, y: 1.8, w: 9, h: 5.5,
+                        fontSize: 18, color: colors.text
+                    });
+            }
+        }
+
+        function loadEventSlides() {
+            slides = [
+                {
+                    title: 'JavaScript Events',
+                    content: 'Making Websites Interactive',
+                    visual: 'JavaScript logo with interactive elements, sparkles showing interactivity',
+                    template: 'title'
+                },
+                {
+                    title: 'What Are JavaScript Events?',
+                    content: '**Event = Something that happens on a webpage**\n\nExamples:\n• User clicks a button\n• User types in a text box\n• User moves their mouse\n• Page finishes loading\n\n**JavaScript can "listen" for these events and respond!**',
+                    visual: 'Event examples with icons, listening ear metaphor',
+                    template: 'content'
+                },
+                {
+                    title: 'Mouse Events - Code Example',
+                    content: '```javascript\n// Listen for mouse hover\nbutton.addEventListener("mouseover", function() {\n    button.style.backgroundColor = "blue";\n});\n```\n\nTranslation: "When mouse hovers over button, make it blue"',
+                    visual: 'Retro computer showing code, button with hover effect',
+                    template: 'code'
+                }
+            ];
+            updatePreview();
+            updateSlideCounter();
+        }
+
+        function loadDOMSlides() {
+            slides = [
+                {
+                    title: 'DOM Manipulation Using JavaScript',
+                    content: 'Making Websites Come Alive',
+                    visual: 'Puppet strings controlling webpage elements',
+                    template: 'title'
+                },
+                {
+                    title: 'What is the DOM?',
+                    content: '**DOM = Document Object Model**\n\n• Think of it as a family tree for HTML elements\n• Every HTML tag becomes an "object" that JavaScript can control\n• Like having remote control for every part of a webpage\n• DOM makes HTML elements programmable!',
+                    visual: 'Family tree diagram, remote control metaphor',
+                    template: 'content'
+                }
+            ];
+            updatePreview();
+            updateSlideCounter();
+        }
+
+        function loadHostingSlides() {
+            slides = [
+                {
+                    title: 'Hosting Web Pages',
+                    content: 'Making Your Website Available to the World',
+                    visual: 'Globe with websites floating around it',
+                    template: 'title'
+                },
+                {
+                    title: 'What is Web Hosting?',
+                    content: '**Web hosting = Renting space on a computer that is always connected to the internet**\n\n• These special computers are called "servers"\n• Servers are like apartment buildings for websites\n• Each website gets its own "apartment" (folder) on the server\n• The server\'s job is to deliver website files to visitors',
+                    visual: 'Apartment building metaphor, server with network cables',
+                    template: 'content'
+                }
+            ];
+            updatePreview();
+            updateSlideCounter();
+        }
+
+        function generatePresetSlides() {
+            // Load a sample of different slide types
+            slides = [
+                {
+                    title: 'Sample Title Slide',
+                    content: 'This is a subtitle',
+                    visual: 'Title slide with CoderOgres branding',
+                    template: 'title'
+                },
+                {
+                    title: 'Sample Activity',
+                    content: 'Students will:\n• Complete a coding challenge\n• Share their solutions\n• Discuss different approaches\n\nTime: 15 minutes',
+                    visual: 'Workshop scene with students coding',
+                    template: 'activity'
+                },
+                {
+                    title: 'Sample Code Example',
+                    content: '```javascript\n// This is sample code\nfunction greetStudent(name) {\n    console.log("Hello, " + name + "!");\n}\n\ngreetStudent("Dylan");\n```\n\nThis function greets a student by name',
+                    visual: 'Retro computer displaying code',
+                    template: 'code'
+                }
+            ];
+            updatePreview();
+            updateSlideCounter();
+        }
+
+        // Initialize
+        updateSlideCounter();
+    </script>
+</body>
+</html>
