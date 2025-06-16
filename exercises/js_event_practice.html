@@ -12,7 +12,18 @@
 
   <body>
 
-    <h1>JavaScript Events</h1>
+    <h1>Table of Contents</h1>
+
+    <ol>
+      <li><a href="#mouse">JavaScript Mouse Events</a></li>
+      <li><a href="#keyboard">JavaScript Keyboard Events</a></li>
+      <li><a href="#forms">JavaScript Form Events</a></li>
+    </ol>
+
+    <hr>
+
+    <h1><a name="mouse" id="mouse">JavaScript Mouse Events</a></h1>
+
     <hr>
         <div class="example-section">
           <p>The examples seen below are powered by two functions. The first is <code>attachEventHandler</code>, which configures an <code>event</code> listener for an element with an ID <code>elementId</code>. It then binds that element with a <code>handler</code> that specifies what behavior should result from said <code>event</code>:</p>
@@ -29,7 +40,7 @@ function attachEventHandler(elementId, event, handler) {
 
         <p>There are event handler functions for each of the unique mouse events in JavaScript, which make calls to <code>updateDisplay</code>. When a call is made, the function changes the content of a visual area in the page, using the metadata associated with the triggering <code>event</code>:</p>
         <pre>
-function updateDisplay(elementId, content {
+function updateDisplay(elementId, content) {
   const element = document.getElementById(elementId);
   if (element) {
     element.textContent = content;
@@ -77,7 +88,7 @@ function updateDisplay(elementId, content {
         </div>
         <span id="doubleClickDisplay" class="output-display">Click info will appear here</span>
         <script>
-            attachEventHandler('doubleClickDiv', 'doubleClick', handleDoubleClick);
+            attachEventHandler('doubleClickDiv', 'dblclick', handleDoubleClick);
         </script>
     </div>
 
@@ -144,7 +155,7 @@ function updateDisplay(elementId, content {
         <script>
             attachEventHandler('mouseUpDiv', 'mouseup', handleMouseUp);
         </script>
-   </div>
+    </div>
 
       <div class="example-section">
         <h2>Mouse Movement Example (<code>mousemove</code>)</h2>
@@ -162,7 +173,7 @@ function updateDisplay(elementId, content {
         <div id="contextMenuDiv" class="event-target">
             Attempt to open a context menu inside me
         </div>
-        <span id="Display" class="output-display">Click info will appear here</span>
+        <span id="contextMenuDisplay" class="output-display">Click info will appear here</span>
         <script>
             attachEventHandler('contextMenuDiv', 'contextmenu', handleContextMenu);
         </script>
@@ -178,6 +189,17 @@ function updateDisplay(elementId, content {
         </script>
     </div>
 
+    <div class="example-section">
+        <h2>DOM Mouse Scroll Example (<code>DOMMouseScroll</code>)</h2>
+        <div id="domMouseScrollDiv" class="event-target">
+            Scroll inside me (Firefox legacy)
+        </div>
+        <span id="domMouseScrollDisplay" class="output-display">Scroll info will appear here</span>
+        <script>
+            attachEventHandler('domMouseScrollDiv', 'DOMMouseScroll', handleDOMMouseScroll);
+        </script>
+    </div>
+
    <!--
     <div class="example-section">
         <h2>Example (<code></code>)</h2>
@@ -190,6 +212,125 @@ function updateDisplay(elementId, content {
         </script>
     </div>
     -->
+
+    <hr>
+
+    <h1><a name="keyboard" id="keyboard">JavaScript Keyboard Events</a></h1>
+
+    <hr>
+    <div class="example-section">
+      <p>Keyboard events are triggered when users interact with the keyboard. The main keyboard events include:</p>
+      <ol>
+        <li><code>keydown</code> - Fired when any key is pressed down</li>
+        <li><code>keyup</code> - Fired when any key is released</li>
+        <li><code>keypress</code> - Fired when a character key is pressed (deprecated but still used)</li>
+      </ol>
+    </div>
+
+    <hr>
+
+    <div class="example-section">
+        <h2>Key Down Example (<code>keydown</code>)</h2>
+        <input type="text" id="keyDownInput" class="event-target" placeholder="Press keys here">
+        <span id="keyDownDisplay" class="output-display">Key info will appear here</span>
+        <script>
+            attachEventHandler('keyDownInput', 'keydown', handleKeyDown);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Key Up Example (<code>keyup</code>)</h2>
+        <input type="text" id="keyUpInput" class="event-target" placeholder="Release keys here">
+        <span id="keyUpDisplay" class="output-display">Key info will appear here</span>
+        <script>
+            attachEventHandler('keyUpInput', 'keyup', handleKeyUp);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Key Press Example (<code>keypress</code>)</h2>
+        <input type="text" id="keyPressInput" class="event-target" placeholder="Type characters here">
+        <span id="keyPressDisplay" class="output-display">Key info will appear here</span>
+        <script>
+            attachEventHandler('keyPressInput', 'keypress', handleKeyPress);
+        </script>
+    </div>
+
+    <hr>
+
+    <h1><a name="forms" id="forms">JavaScript Form Events</a></h1>
+
+    <hr>
+    <div class="example-section">
+      <p>Form events are triggered when users interact with form elements. The main form events include:</p>
+      <ol>
+        <li><code>submit</code> - Fired when a form is submitted</li>
+        <li><code>input</code> - Fired when an input value changes</li>
+        <li><code>change</code> - Fired when an input loses focus and its value has changed</li>
+        <li><code>focus</code> - Fired when an element gains focus</li>
+        <li><code>blur</code> - Fired when an element loses focus</li>
+        <li><code>reset</code> - Fired when a form is reset</li>
+      </ol>
+    </div>
+
+    <hr>
+
+    <div class="example-section">
+        <h2>Form Submit Example (<code>submit</code>)</h2>
+        <form id="submitForm" class="event-target">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <button type="submit">Submit Form</button>
+            <button type="reset">Reset Form</button>
+        </form>
+        <span id="formSubmitDisplay" class="output-display">Form info will appear here</span>
+        <script>
+            attachEventHandler('submitForm', 'submit', handleFormSubmit);
+            attachEventHandler('submitForm', 'reset', handleFormReset);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Input Event Example (<code>input</code>)</h2>
+        <input type="text" id="inputField" class="event-target" placeholder="Type to see input events">
+        <span id="inputDisplay" class="output-display">Input info will appear here</span>
+        <script>
+            attachEventHandler('inputField', 'input', handleInput);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Change Event Example (<code>change</code>)</h2>
+        <select id="changeSelect" class="event-target">
+            <option value="">Select an option</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+        <span id="changeDisplay" class="output-display">Change info will appear here</span>
+        <script>
+            attachEventHandler('changeSelect', 'change', handleChange);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Focus Event Example (<code>focus</code>)</h2>
+        <input type="text" id="focusInput" class="event-target" placeholder="Click to focus">
+        <span id="focusDisplay" class="output-display">Focus info will appear here</span>
+        <script>
+            attachEventHandler('focusInput', 'focus', handleFocus);
+        </script>
+    </div>
+
+    <div class="example-section">
+        <h2>Blur Event Example (<code>blur</code>)</h2>
+        <input type="text" id="blurInput" class="event-target" placeholder="Click away to blur">
+        <span id="blurDisplay" class="output-display">Blur info will appear here</span>
+        <span id="formResetDisplay" class="output-display">Reset info will appear here</span>
+        <script>
+            attachEventHandler('blurInput', 'blur', handleBlur);
+        </script>
+    </div>
 
   </body>
 

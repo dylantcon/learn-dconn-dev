@@ -120,22 +120,53 @@
             border-radius: 15px;
             position: relative;
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+            flex-direction: column;
         }
 
         .rsvp-display.active {
             display: flex;
         }
 
-        .rsvp-word {
-            color: #2d3748;
-            letter-spacing: 1px;
-            transition: all 0.2s ease;
+        .rsvp-words-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
             margin-bottom: 10px;
         }
 
-        .rsvp-word.highlight {
+        .rsvp-word {
+            color: #2d3748;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .rsvp-word.current {
+            color: #2d3748;
+            transform: scale(1.0);
+            font-weight: 700;
+        }
+
+        .rsvp-word.current.highlight {
             color: #e53e3e;
             transform: scale(1.1);
+        }
+
+        .rsvp-word.previous,
+        .rsvp-word.next {
+            color: #a0aec0;
+            font-weight: 400;
+            transform: scale(0.7);
+            opacity: 0.6;
+        }
+
+        .rsvp-word.far-previous,
+        .rsvp-word.far-next {
+            color: #a0aec0;
+            font-weight: 300;
+            transform: scale(0.5);
+            opacity: 0.5;
         }
 
         .rsvp-phonetic {
@@ -251,10 +282,14 @@
         <div class="text-area">
             <!-- RSVP Display -->
             <div id="rsvpDisplay" class="rsvp-display">
-                <div>
-                    <div id="rsvpWord" class="rsvp-word">Click Play to Start</div>
-                    <div id="rsvpPhonetic" class="rsvp-phonetic">[klɪk pleɪ tu stɑrt]</div>
+                <div class="rsvp-words-container" id="rsvpWordsContainer">
+                    <div class="rsvp-word far-previous" id="rsvpWordFarPrev"></div>
+                    <div class="rsvp-word previous" id="rsvpWordPrev"></div>
+                    <div class="rsvp-word current" id="rsvpWordCurrent">Click Play to Start</div>
+                    <div class="rsvp-word next" id="rsvpWordNext"></div>
+                    <div class="rsvp-word far-next" id="rsvpWordFarNext"></div>
                 </div>
+                <div id="rsvpPhonetic" class="rsvp-phonetic">[klɪk pleɪ tu stɑrt]</div>
             </div>
 
             <!-- Traditional Reading Display -->
@@ -326,7 +361,11 @@
                     textInput: document.getElementById('textInput'),
                     status: document.getElementById('status'),
                     rsvpDisplay: document.getElementById('rsvpDisplay'),
-                    rsvpWord: document.getElementById('rsvpWord'),
+                    rsvpWordFarPrev: document.getElementById('rsvpWordFarPrev'),
+                    rsvpWordPrev: document.getElementById('rsvpWordPrev'),
+                    rsvpWordCurrent: document.getElementById('rsvpWordCurrent'),
+                    rsvpWordNext: document.getElementById('rsvpWordNext'),
+                    rsvpWordFarNext: document.getElementById('rsvpWordFarNext'),
                     rsvpPhonetic: document.getElementById('rsvpPhonetic'),
                     traditionalDisplay: document.getElementById('traditionalDisplay'),
                     processText: document.getElementById('processText'),
@@ -424,18 +463,47 @@
 
             renderRSVP() {
                 if (this.words.length === 0) return;
-                const currentWord = this.words[this.currentWordIndex] || 'End';
-                this.elements.rsvpWord.textContent = currentWord;
                 
-                // Display phonetic pronunciation
+                const currentIndex = this.currentWordIndex;
+                
+                // Get words for each position
+                const farPrevWord = currentIndex >= 2 ? this.words[currentIndex - 2] : '';
+                const prevWord = currentIndex >= 1 ? this.words[currentIndex - 1] : '';
+                const currentWord = this.words[currentIndex] || 'End';
+                const nextWord = currentIndex + 1 < this.words.length ? this.words[currentIndex + 1] : '';
+                const farNextWord = currentIndex + 2 < this.words.length ? this.words[currentIndex + 2] : '';
+                
+                // Update display elements
+                this.elements.rsvpWordFarPrev.textContent = farPrevWord;
+                this.elements.rsvpWordPrev.textContent = prevWord;
+                this.elements.rsvpWordCurrent.textContent = currentWord;
+                this.elements.rsvpWordNext.textContent = nextWord;
+                this.elements.rsvpWordFarNext.textContent = farNextWord;
+                
+                // Display phonetic pronunciation for current word only
                 const phonetic = this.getPhonetic(currentWord);
                 this.elements.rsvpPhonetic.textContent = phonetic;
                 
-                // Highlight if word was recognized
+                // Highlight current word if recognized
                 if (this.recognizedWords.has(currentWord)) {
-                    this.elements.rsvpWord.classList.add('highlight');
+                    this.elements.rsvpWordCurrent.classList.add('highlight');
                 } else {
-                    this.elements.rsvpWord.classList.remove('highlight');
+                    this.elements.rsvpWordCurrent.classList.remove('highlight');
+                }
+                
+                // Add subtle recognition indicators for neighboring words
+                this.updateWordRecognitionClasses(this.elements.rsvpWordPrev, prevWord);
+                this.updateWordRecognitionClasses(this.elements.rsvpWordNext, nextWord);
+                this.updateWordRecognitionClasses(this.elements.rsvpWordFarPrev, farPrevWord);
+                this.updateWordRecognitionClasses(this.elements.rsvpWordFarNext, farNextWord);
+            }
+
+            updateWordRecognitionClasses(element, word) {
+                // Add subtle visual feedback for recognized neighboring words
+                if (word && this.recognizedWords.has(word)) {
+                    element.style.textDecoration = 'underline';
+                } else {
+                    element.style.textDecoration = 'none';
                 }
             }
 

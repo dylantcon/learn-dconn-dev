@@ -85,3 +85,39 @@ code {
     border-radius: 3px;
     color: #002261;
 }
+
+/* Form-specific styling to override event-target defaults */
+form.event-target {
+    height: auto;
+    display: block;
+    padding: 20px;
+}
+
+form.event-target input,
+form.event-target button {
+    display: block;
+    margin: 10px 0;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form.event-target button {
+    background-color: #007cba;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+form.event-target button:hover {
+    background-color: #005a87;
+}
+
+form.event-target button[type="reset"] {
+    background-color: #666;
+}
+
+form.event-target button[type="reset"]:hover {
+    background-color: #444;
+}

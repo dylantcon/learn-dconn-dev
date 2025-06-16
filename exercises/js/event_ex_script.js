@@ -90,9 +90,70 @@ function handleDOMMouseScroll(event) {
   updateDisplay('domMouseScrollDisplay', info);
 }
 
-// event string: ''
+// event string: 'contextmenu'
 function handleContextMenu(event) {
   event.preventDefault();
   const info = `Context menu at: (${event.clientX}, ${event.clientY}) | Prevented: ${event.defaultPrevented}`;
   updateDisplay('contextMenuDisplay', info);
+}
+
+// ===== KEYBOARD EVENT HANDLERS =====
+
+// event string: 'keydown'
+function handleKeyDown(event) {
+  const info = `Key down: ${event.key} | Code: ${event.code} | Ctrl: ${event.ctrlKey} | Shift: ${event.shiftKey} | Alt: ${event.altKey}`;
+  updateDisplay('keyDownDisplay', info);
+}
+
+// event string: 'keyup'
+function handleKeyUp(event) {
+  const info = `Key up: ${event.key} | Code: ${event.code} | Time: ${event.timeStamp.toFixed(0)}ms`;
+  updateDisplay('keyUpDisplay', info);
+}
+
+// event string: 'keypress'
+function handleKeyPress(event) {
+  const info = `Key press: ${event.key} | Char code: ${event.charCode} | Which: ${event.which}`;
+  updateDisplay('keyPressDisplay', info);
+}
+
+// ===== FORM EVENT HANDLERS =====
+
+// event string: 'submit'
+function handleFormSubmit(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData.entries());
+  const info = `Form submitted | Data: ${JSON.stringify(data)} | Prevented: ${event.defaultPrevented}`;
+  updateDisplay('formSubmitDisplay', info);
+}
+
+// event string: 'input'
+function handleInput(event) {
+  const info = `Input changed: "${event.target.value}" | Type: ${event.target.type} | ID: ${event.target.id}`;
+  updateDisplay('inputDisplay', info);
+}
+
+// event string: 'change'
+function handleChange(event) {
+  const info = `Value changed: "${event.target.value}" | Type: ${event.target.type} | ID: ${event.target.id}`;
+  updateDisplay('changeDisplay', info);
+}
+
+// event string: 'focus'
+function handleFocus(event) {
+  const info = `Focus gained: ${event.target.tagName} | ID: ${event.target.id} | Type: ${event.target.type || 'N/A'}`;
+  updateDisplay('focusDisplay', info);
+}
+
+// event string: 'blur'
+function handleBlur(event) {
+  const info = `Focus lost: ${event.target.tagName} | ID: ${event.target.id} | Value: "${event.target.value || 'N/A'}"`;
+  updateDisplay('blurDisplay', info);
+}
+
+// event string: 'reset'
+function handleFormReset(event) {
+  const info = `Form reset | Target: ${event.target.tagName} | ID: ${event.target.id}`;
+  updateDisplay('formResetDisplay', info);
 }

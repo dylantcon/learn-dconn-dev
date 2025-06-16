@@ -1,0 +1,21 @@
+.title {
+  text-align: center;
+  font-size: 32px;
+  color: darkorange;
+  font-family: 'Verdana', sans-serif;
+}
+
+.subtitle {
+  color: #8b4513;
+  font-size: 24px;
+  font-family:'Verdana', sans-serif;
+}
+
+.list {
+  font-size: 18px;
+  font-family: 'Verdana', sans-serif;
+}
+
+.block {
+  background-color: #adff2f;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Story - Page 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dropdown-container">
+    <button class="dropdown-button" onclick="toggleDropdown()">⚙️ Story Tools</button>
+  </div>
+  
+  <div class="story">
+    <h1>🌟 A New Adventure Begins</h1>
+    <p>One morning, an explorer stood at a fork in the road. Should they go into the forest or climb the mountain?</p>
+  </div>
+  <a href="page2a.html"><button>🌲 Enter the Forest</button></a>
+  <a href="page2b.html"><button>⛰️ Climb the Mountain</button></a>
+
+  <script>
+    function toggleDropdown() {
+      const container = document.querySelector('.dropdown-container');
+      const existingMenu = container.querySelector('.dropdown-menu');
+      
+      if (existingMenu) {
+        container.removeChild(existingMenu);
+      } else {
+        const menu = document.createElement('div');
+        menu.className = 'dropdown-menu';
+        
+        const homeItem = document.createElement('button');
+        homeItem.className = 'dropdown-item';
+        homeItem.textContent = '🏠 Home';
+        homeItem.onclick = () => window.location.href = 'index.html';
+        
+        const restartItem = document.createElement('button');
+        restartItem.className = 'dropdown-item';
+        restartItem.textContent = '🔄 Restart Story';
+        restartItem.onclick = () => window.location.href = 'index.html';
+        
+        const aboutItem = document.createElement('button');
+        aboutItem.className = 'dropdown-item';
+        aboutItem.textContent = '📖 About Story';
+        aboutItem.onclick = () => alert('This is an interactive storybook! Make choices to explore different paths.');
+        
+        menu.appendChild(homeItem);
+        menu.appendChild(restartItem);
+        menu.appendChild(aboutItem);
+        
+        container.appendChild(menu);
+      }
+    }
+  </script>
+</body>
+</html>
