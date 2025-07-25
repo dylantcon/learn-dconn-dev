@@ -1,0 +1,217 @@
+/* Universal selector - resets margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Type selector for body */
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background-color: #fffde7;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Type selectors for headings */
+h1 {
+  font-size: 32px;
+  color: darkorange;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  color: #8b4513;
+}
+
+h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Type selector for paragraphs */
+p {
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+/* Type selector for links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ID selector for main heading */
+#main-heading {
+  font-family: 'Verdana', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ID selector for navigation title */
+#nav-title {
+  color: darkred;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+}
+
+/* Class selector for navigation */
+.story-navigation {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #adff2f;
+  padding: 15px;
+  border-radius: 10px;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border: 2px solid #8bc34a;
+}
+
+/* Class selector for navigation list */
+.nav-list {
+  list-style: none;
+}
+
+/* Class selector for navigation links */
+.nav-link {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #98fb98;
+  transform: translateX(3px);
+}
+
+/* Class selector for story container */
+.story-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 80px 20px;
+  text-align: center;
+}
+
+/* Class selector for story header */
+.story-header {
+  margin-bottom: 30px;
+}
+
+/* Class selector for story content */
+.story-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  border: 3px solid #ffd54f;
+}
+
+/* Class selector for story text */
+.story-text {
+  color: #444;
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Class selector for story questions */
+.story-question {
+  font-weight: bold;
+  color: #8b4513;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Class selector for choices container */
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+/* Class selector for choice buttons */
+.choice-button {
+  display: inline-block;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  min-width: 200px;
+  text-align: center;
+}
+
+/* Hover effects for choice buttons */
+.choice-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* Class selectors for different button types */
+.forest-choice {
+  background-color: #228b22;
+  border-color: #006400;
+}
+
+.forest-choice:hover {
+  background-color: #006400;
+}
+
+.mountain-choice {
+  background-color: #4682b4;
+  border-color: #2f4f4f;
+}
+
+.mountain-choice:hover {
+  background-color: #2f4f4f;
+}
+
+/* Class selector for restart button */
+.restart-button {
+  background-color: #ff6b35;
+  border-color: #ff4500;
+  font-size: 20px;
+  padding: 18px 30px;
+}
+
+.restart-button:hover {
+  background-color: #ff4500;
+}
+
+/* Class selector for footer */
+.story-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 15px;
+  background-color: #f0f8ff;
+  border-top: 3px solid #ffd54f;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+/* Class selector for footer text */
+.footer-text {
+  color: #666;
+  font-style: italic;
+  font-size: 16px;
+  margin: 0;
+}

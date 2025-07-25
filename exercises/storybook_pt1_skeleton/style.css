@@ -1,0 +1,173 @@
+/* TODO: Add universal selector to reset default spacing */
+/* HINT: Use * selector with margin and padding properties */
+/* margin options: 0, 10px, 20px, auto */
+/* padding options: 0, 5px, 10px, 15px, 20px */
+
+
+/* TODO: Add type selector for body */
+/* HINT: Style the entire page background and text */
+/* Properties to use: font-family, background-color, color */
+/* font-family options: 'Georgia', 'Arial', 'Verdana', serif, sans-serif */
+/* background-color options: #fffde7, #f0f8ff, #e0f7fa, white */
+/* color options: #333, black, #444, #666 */
+
+
+/* TODO: Add type selector for h1 headings */
+/* HINT: Make main titles big and colorful */
+/* Properties to use: font-size, color, text-align */
+/* font-size options: 24px, 28px, 32px, 36px */
+/* color options: darkorange, #8b4513, darkred, #ff6b35 */
+/* text-align options: center, left, right */
+
+
+/* TODO: Add type selector for h3 headings */
+/* HINT: Style smaller headings in navigation */
+/* Properties to use: font-size, color */
+/* font-size options: 16px, 18px, 20px */
+/* color options: #333, darkred, #8b4513 */
+
+
+/* TODO: Add type selector for paragraphs */
+/* HINT: Make text readable and well-spaced */
+/* Properties to use: font-size, margin */
+/* font-size options: 16px, 18px, 20px */
+/* margin options: 10px 0, 15px 0, 20px 0 */
+
+
+/* TODO: Add type selector for links */
+/* HINT: Remove default underlines */
+/* Properties to use: text-decoration */
+/* text-decoration options: none, underline */
+
+
+/* TODO: Add ID selector for main heading */
+/* HINT: Use #main-heading to style the page title specially */
+/* Properties to use: font-family, color */
+/* font-family options: 'Verdana', 'Arial', sans-serif */
+/* color options: darkorange, #ff6b35, darkred */
+
+
+/* TODO: Add ID selector for navigation title */
+/* HINT: Use #nav-title to style "Story Menu" text */
+/* Properties to use: color, font-size, text-align, margin-bottom */
+/* color options: darkred, #333, #8b4513 */
+/* font-size options: 14px, 16px, 18px */
+/* text-align options: center, left */
+/* margin-bottom options: 5px, 10px, 15px */
+
+
+/* TODO: Add class selector for navigation */
+/* HINT: Use .story-navigation to position menu in corner */
+/* Properties to use: position, top, right, background-color, padding, border-radius */
+/* position options: fixed, absolute */
+/* top options: 10px, 20px, 30px */
+/* right options: 10px, 20px, 30px */
+/* background-color options: #adff2f, #98fb98, #f0f8ff */
+/* padding options: 10px, 15px, 20px */
+/* border-radius options: 5px, 10px, 15px */
+
+
+/* TODO: Add class selector for navigation list */
+/* HINT: Use .nav-list to remove bullet points */
+/* Properties to use: list-style */
+/* list-style options: none, disc */
+
+
+/* TODO: Add class selector for navigation links */
+/* HINT: Use .nav-link to style menu items */
+/* Properties to use: display, padding, color, border-radius, margin-bottom */
+/* display options: block, inline-block */
+/* padding options: 5px 10px, 8px 12px, 10px 15px */
+/* color options: #333, black, #666 */
+/* border-radius options: 3px, 5px, 8px */
+/* margin-bottom options: 3px, 5px, 8px */
+
+
+/* TODO: Add class selector for story container */
+/* HINT: Use .story-container to center content and add space */
+/* Properties to use: margin, padding, text-align */
+/* margin options: 0 auto, 20px auto */
+/* padding options: 20px, 40px 20px, 60px 20px */
+/* text-align options: center, left */
+
+
+/* TODO: Add class selector for story content */
+/* HINT: Use .story-content to make a nice content box */
+/* Properties to use: background-color, padding, border-radius, margin-bottom */
+/* background-color options: white, #f9f9f9, #fff */
+/* padding options: 20px, 25px, 30px */
+/* border-radius options: 10px, 15px, 20px */
+/* margin-bottom options: 20px, 30px, 40px */
+
+
+/* TODO: Add class selector for story text */
+/* HINT: Use .story-text to style paragraph content */
+/* Properties to use: color, font-size, margin-bottom, text-align */
+/* color options: #444, #333, #666 */
+/* font-size options: 16px, 18px, 20px */
+/* margin-bottom options: 10px, 15px, 20px */
+/* text-align options: left, center */
+
+
+/* TODO: Add class selector for story questions */
+/* HINT: Use .story-question to make questions stand out */
+/* Properties to use: font-weight, color, font-size, text-align */
+/* font-weight options: bold, normal */
+/* color options: #8b4513, darkred, darkorange */
+/* font-size options: 18px, 20px, 22px */
+/* text-align options: center, left */
+
+
+/* TODO: Add class selector for choices container */
+/* HINT: Use .choices to arrange buttons nicely */
+/* Properties to use: text-align, margin */
+/* text-align options: center, left */
+/* margin options: 20px 0, 30px 0 */
+
+
+/* TODO: Add class selector for choice buttons */
+/* HINT: Use .choice-button to make buttons look clickable */
+/* Properties to use: display, padding, border-radius, font-size, color, margin */
+/* display options: inline-block, block */
+/* padding options: 10px 20px, 15px 25px, 12px 24px */
+/* border-radius options: 5px, 8px, 10px, 12px */
+/* font-size options: 16px, 18px, 20px */
+/* color options: white, black */
+/* margin options: 5px, 10px, 15px */
+
+
+/* TODO: Add class selectors for different button types */
+/* HINT: Use .forest-choice and .mountain-choice for different colors */
+/* Properties to use: background-color */
+/* forest background-color options: #228b22, #006400, #32cd32 */
+/* mountain background-color options: #4682b4, #2f4f4f, #5f9ea0 */
+
+
+/* TODO: Add hover effects for buttons */
+/* HINT: Use .choice-button:hover to change color when mouse is over button */
+/* Properties to use: background-color */
+/* hover background-color options: #006400, #2f4f4f, #ff4500 */
+
+
+/* TODO: Add class selector for footer */
+/* HINT: Use .story-footer to style bottom area */
+/* Properties to use: text-align, padding, background-color */
+/* text-align options: center, left */
+/* padding options: 15px, 20px */
+/* background-color options: #f0f8ff, #fffde7, #e0f7fa */
+
+
+/* TODO: Add class selector for footer text */
+/* HINT: Use .footer-text to style footer messages */
+/* Properties to use: color, font-style, font-size */
+/* color options: #666, #888, #999 */
+/* font-style options: italic, normal */
+/* font-size options: 14px, 16px, 18px */
+
+
+/* TODO: Add class selector for restart button */
+/* HINT: Use .restart-button to make ending buttons special */
+/* Properties to use: background-color, font-size, padding */
+/* background-color options: #ff6b35, #ff4500, #ffa500 */
+/* font-size options: 18px, 20px, 22px */
+/* padding options: 15px 30px, 18px 35px, 20px 40px */
